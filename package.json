@@ -4,7 +4,7 @@
   "description": "An application to create recommendations",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,10 +20,13 @@
   "homepage": "https://github.com/vic30004/recommendations#readme",
   "dependencies": {
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.4.0",
+    "knex": "^0.21.12",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "pg": "^8.5.1"
   }
 }

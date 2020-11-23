@@ -2,9 +2,12 @@ FROM node:alpine
 
 WORKDIR '/app'
 
+
 COPY package.json .
 RUN npm install 
 
 COPY . .
 
-CMD ["npx","nodemon","index.js"]
+ENV POSTGRES_PASSWORD=process.env.DB_PASSWORD
+
+CMD ["npm","run","dev"]
