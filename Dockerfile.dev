@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-ENV POSTGRES_PASSWORD=process.env.DB_PASSWORD
+
 
 CMD ["npm","run","dev"]
