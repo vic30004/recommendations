@@ -4,28 +4,30 @@ const { buildSchema } = require('graphql');
 const app = express();
 const colors = require('colors');
 const PORT = 5000;
+const schema = require('./graphql/schema');
+const knex = require('./knexfile');
+const resolver = require('./graphql/resolvers')
 
 
-
-
-const schema = buildSchema(`
-    type Query {
-        hello: String 
-}
-    
-`);
+app.set('db', knex.development);
 
 const root = {
-  hello: () => {
-    return 'Hello World';
+  users: async () => {
+    return knex.development
+      .select('*')
+      .from('users')
+      .then((rows) => rows);
   },
 };
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(
   '/graphql',
   graphqlHTTP({
     schema: schema,
-    rootValue: root,
+    rootValue: resolver,
     graphiql: true,
   })
 );
