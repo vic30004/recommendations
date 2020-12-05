@@ -13,16 +13,16 @@ module.exports = {
   },
 
   // Filter recommencation by title, cat, user_id
-  recommendationFilter: async ({title, category, user_id}, context) => {
-    let res ={}
-    if (title){
-      res['title']=title
+  recommendationFilter: async ({ title, category, user_id }, context) => {
+    let res = {};
+    if (title) {
+      res["title"] = title;
     }
-    if(category){
-      res['category']=category
+    if (category) {
+      res["category"] = category;
     }
-    if(user_id){
-      res['user_id']=user_id
+    if (user_id) {
+      res["user_id"] = user_id;
     }
     const { token } = await context();
     if (token) {
@@ -58,39 +58,63 @@ module.exports = {
     throw new Error("Please login to add a recommendation");
   },
 
-
   // Edit recommendation
-editRecommendation: async({id,title,category,description,main_picture}, context)=>{
-  const {token} = await context();
-  let res = {}
-  if(title){
-    res['title']=title
-  }
-  if(category){
-    res['category']=category
-  }
-  if(description){
-    res['description']=description
-  }
-  if(main_picture){
-    res['main_picture']=main_picture
-  }
-  if(token){
-    const user = verify(token,secret)
-    const user_id = user['0'].id
-    try {
-      let checkIfSameUser = await db("recommendation").where({id ,user_id})
-      if(checkIfSameUser.length>0){
-        let query = await db("recommendation").where({id}).update(res).returning("*")
-        return query
-      }
-      throw new Error('Unaouthrized to edit this recommendation')
-    } catch (error) {
-      throw error
+  editRecommendation: async (
+    { id, title, category, description, main_picture },
+    context
+  ) => {
+    const { token } = await context();
+    let res = {};
+    if (title) {
+      res["title"] = title;
     }
-  }
-  throw new Error("Please sign in to edit")
-}
+    if (category) {
+      res["category"] = category;
+    }
+    if (description) {
+      res["description"] = description;
+    }
+    if (main_picture) {
+      res["main_picture"] = main_picture;
+    }
+    if (token) {
+      const user = verify(token, secret);
+      const user_id = user["0"].id;
+      try {
+        let checkIfSameUser = await db("recommendation").where({ id, user_id });
+        if (checkIfSameUser.length > 0) {
+          let query = await db("recommendation")
+            .where({ id })
+            .update(res)
+            .returning("*");
+          return query;
+        }
+        throw new Error("Unaouthrized to edit this recommendation");
+      } catch (error) {
+        throw error;
+      }
+    }
+    throw new Error("Please sign in to edit");
+  },
 
-  // Delete Recommendation 
+  // Delete Recommendation
+  deleteRecommendation: async ({ id }, context) => {
+    const { token } = await context();
+
+    if (token) {
+      const user = verify(token, secret);
+      const user_id = user[0].id;
+      try {
+        const check = await db("recommendation").where({ id, user_id });
+        if (check.length > 0) {
+          const query = await db("recommendation").where({ user_id }).del();
+          return { message: "Recommendation deleted successfuly" };
+        }
+        throw new Error("Unautharized to make changes");
+      } catch (error) {
+        throw error;
+      }
+    }
+    return new Error("Please sign in");
+  },
 };
