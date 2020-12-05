@@ -27,7 +27,6 @@ const verifyUser = async (req) => {
 
 const context = async req => {
   const { authorization: token } = req.headers;
-  console.log(token)
   return { token };
 };
 
@@ -41,7 +40,6 @@ const verifyToken = (req, res, next) => {
     req.headers.authorization,
     secret,
     (err, decoded) => {
-      console.log(secret)
       if (err) {
         return res.send(401);
       }

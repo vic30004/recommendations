@@ -2,11 +2,12 @@ const knex = require("../../db/knex");
 const db = require("../../db/knex");
 const express = require("express");
 const app = express();
+const verify = require('../../middleware/verifyToken')
 require("dotenv").config();
-
+const secret = process.env.JWTSECRET || "tejksn";
 module.exports = {
   recommendations: async (context) => {
-    return db("recommendations");
+    return db("recommendation");
   },
 
   addRecommendations: async (
@@ -14,17 +15,17 @@ module.exports = {
     context
   ) => {
     const {token} = await context();
-    // Decode token
-
-    // Retrieve user id
-
-    // Add it to mutation as user_id
     if(token){
+     const user= verify(token,secret)
+     console.log(user)
+     const user_id = user[0].id
+      console.log(title, description, category, main_picture)
       try {
         const query = await db("recommendation")
-          .insert(title, description, category, main_picture)
+          .insert({title, description, category, main_picture, user_id})
           .returning("*");
-          return query
+          let userRes= {...user['0']}
+          return {recommendation:{...query["0"]}, user:userRes}
       } catch (error) {
         throw error
       }
