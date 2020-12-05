@@ -24,4 +24,5 @@ recommendations: [Recommendation]
 
 exports.RecommendationMutation = `
 addRecommendations( title:String!, description:String!, category:String!, main_picture:String!): RecommendationWithUser
+recommendationFilter(title:String, category:String,user_id:ID):[Recommendation]
 `;
