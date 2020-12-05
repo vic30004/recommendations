@@ -10,9 +10,8 @@ const resolver = require('./graphql/resolvers');
 const unless = require('express-unless');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-
+const secret = process.env.JWTSECRET || "tejksn";
 app.set('db', knex.development);
-
 const root = {
   users: async () => {
     return knex.development
@@ -26,14 +25,23 @@ const verifyUser = async (req) => {
   const token = await req.headers;
 };
 
+const context = async req => {
+  const { authorization: token } = req.headers;
+  console.log(token)
+  return { token };
+};
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const verifyToken = (req, res, next) => {
+  console.log(req.headers)
   jwt.verify(
     req.headers.authorization,
-    process.env.JWTSECRET,
+    secret,
     (err, decoded) => {
+      console.log(secret)
       if (err) {
         return res.send(401);
       }
@@ -47,14 +55,18 @@ app.use(verifyToken.unless({ path: ['/graphql', '/'] }));
 
 app.use(
   '/graphql',
+ 
   graphqlHTTP(async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
+  
+    res.set('Access-Control-Allow-Origin', '*',
+    );
     verifyUser(req);
+   
     return {
       schema: schema,
       rootValue: resolver,
       graphiql: true,
-      context: { req, res },
+      context: () => context(req)
     };
   })
 );

@@ -6,7 +6,8 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-const secret = process.env.JWTSECRET;
+const secret = process.env.JWTSECRET || "tejksn";
+console.log(secret)
 module.exports = {
   users: () => {
     return db('users');
@@ -25,7 +26,7 @@ module.exports = {
   addUser: async ({ username, email, password }) => {
     const hashPass = await bcrypt.hash(password, 12);
     try {
-      const query = await knex('users')
+      const query = await db('users')
         .insert({ username, email, password: hashPass })
         .returning('*');
       return query;
@@ -34,8 +35,9 @@ module.exports = {
     }
   },
 
-  loginUser: async ({ username, password }, res, req, next) => {
+  loginUser: async ({ username, password }, context) => {
     const user = await db('users').where({ username });
+    console.log(context())
     if (user.length < 1) {
       throw new Error('Invalid Credentials');
     }
@@ -51,7 +53,10 @@ module.exports = {
       secret,
       { expiresIn: '1y' }
     );
+      if(user.length>0){
+        console.log(user)
+        return {user, token}
 
-    return { token };
+      }
   },
 };

@@ -4,6 +4,7 @@ const recommendationSchema = require('./schemas/recommendation');
 
 module.exports = buildSchema(`
 ${userSchema.User}
+${userSchema.Authpayload}
 ${recommendationSchema.Recommendations}
 
 type RootQuery {
@@ -14,6 +15,7 @@ type RootQuery {
 
 type RootMutation{
     ${userSchema.UserMutations}
+    ${recommendationSchema.RecommendationMutation}
     
 }
 
