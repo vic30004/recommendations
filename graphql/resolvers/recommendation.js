@@ -1,7 +1,4 @@
-const knex = require("../../db/knex");
 const db = require("../../db/knex");
-const express = require("express");
-const app = express();
 const verify = require("../../middleware/verifyToken");
 require("dotenv").config();
 const secret = process.env.JWTSECRET || "tejksn";
