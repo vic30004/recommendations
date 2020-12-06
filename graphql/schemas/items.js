@@ -16,4 +16,5 @@ showItems(recommendation_id:Int): [Items]
 exports.ItemsMutation=`
 addItems(title:String!, description:String!, cover_picture:String, recommendation_id:ID!):[Items]
 editItems(id:ID!, title:String, description:String, cover_picture:String, recommendation_id:ID!):[Items]
+deleteItem(id:ID!, recommendation_id:ID!):Message
 `

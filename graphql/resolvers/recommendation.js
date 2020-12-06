@@ -104,7 +104,7 @@ module.exports = {
       try {
         const check = await db("recommendation").where({ id, user_id });
         if (check.length > 0) {
-          const query = await db("recommendation").where({ user_id }).del();
+          const query = await db("recommendation").where({ id }).del();
           return { message: "Recommendation deleted successfuly" };
         }
         throw new Error("Unautharized to make changes");
