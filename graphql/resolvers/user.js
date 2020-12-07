@@ -7,7 +7,6 @@ const app = express();
 require('dotenv').config();
 
 const secret = process.env.JWTSECRET || "tejksn";
-console.log(secret)
 module.exports = {
   users: () => {
     return db('users');
@@ -37,7 +36,6 @@ module.exports = {
 
   loginUser: async ({ username, password }, context) => {
     const user = await db('users').where({ username });
-    console.log(context())
     if (user.length < 1) {
       throw new Error('Invalid Credentials');
     }
@@ -45,7 +43,6 @@ module.exports = {
     if (!validPass) {
       throw new Error('Invalid Credentials');
     }
-    console.log(secret);
     const token = await jwt.sign(
       {
         user: user,
@@ -54,7 +51,6 @@ module.exports = {
       { expiresIn: '1y' }
     );
       if(user.length>0){
-        console.log(user)
         return {user, token}
 
       }

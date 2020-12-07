@@ -35,7 +35,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const verifyToken = (req, res, next) => {
-  console.log(req.headers)
   jwt.verify(
     req.headers.authorization,
     secret,
