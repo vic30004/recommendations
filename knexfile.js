@@ -11,7 +11,7 @@ module.exports = {
       password: process.env.DB_PASSWORD,
       database: process.env.DB,
     },
-    seed: {
+    seeds: {
       directory: __dirname + '/db/seed',
     },
     migrations: {
