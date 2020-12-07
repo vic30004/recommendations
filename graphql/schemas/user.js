@@ -1,4 +1,3 @@
-const db = require('../../knexfile');
 
 exports.User = `
 type User{
@@ -7,19 +6,21 @@ type User{
     email: String!
     password: String!
 }
-type Token{
-    token: String
-    
-}
+
 `;
+exports.Authpayload =`
+type Authpayload{
+    user: [User!]
+    token: String!
+    
+}`
 
 exports.UserQueries = `
     user(id:Int!):[User]
     users:[User]
-    token: Token
 `;
 
 exports.UserMutations = `
     addUser(username:String!,email:String!,password:String!): [User]
-    loginUser(username:String!, password:String!): Token
+    loginUser(username:String!, password:String!): Authpayload
 `;
