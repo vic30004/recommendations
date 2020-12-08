@@ -5,5 +5,5 @@ export const Border = styled.div`
   height: 90vh;
   background: #ffffff;
   display: flex;
-  box-shadow: -4px 8px 4px 2px rgb(86 86 86 / 20%);  border: none;
+  box-shadow: 4px -4px 3px 2px rgb(0 0 0 / 20%); border: none;
 `;

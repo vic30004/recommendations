@@ -1,11 +1,33 @@
-import React from 'react'
-import {IntroContainer} from '../../styles/Homepage'
-const About = () => {
-    return (
-        <IntroContainer>
-            <h1>Recommend</h1>
-        </IntroContainer>
-    )
-}
+import React from "react";
+import { IntroContainer, PhotoContainer } from "../../styles/Homepage";
+import { Image, Placeholder } from "cloudinary-react";
 
-export default About
+const About = () => {
+  return (
+    <IntroContainer>
+      <h1>
+        <span>Recom</span>mend
+      </h1>
+
+      <PhotoContainer>
+        <Image
+          cloud_name='dawyijhjw'
+          publicId='recommendation/Slice_3-removebg-preview_nqzy8m'
+          width='500'
+          crop='limit'
+          quality='auto'
+          responsive='true'
+          loading='lazy'
+          format='webp'
+          flag='prgressive'
+        >
+          <Placeholder type='pixelate' />
+        </Image>
+        <h2>Platform to recommend anything</h2>
+        <p>Create a following by recommending</p>
+      </PhotoContainer>
+    </IntroContainer>
+  );
+};
+
+export default About;
