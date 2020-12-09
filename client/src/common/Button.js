@@ -9,10 +9,12 @@ export const Button = styled.button`
   border: none;
   font-size: 13px;
   font-weight: bold;
-  box-shadow: 0 0 3px;
+  box-shadow: 0 0 3px ${(props) => (props.shadowC ? props.shadowC : "#fff")};
   outline: none;
   height: 40px;
   margin-top: ${(props) => (props.marg ? props.marg : "1rem")};
   cursor: pointer;
   font-family: var(--header-font);
+  display: ${(props) => (props.inline ? "inherit" : "block")};
+  margin: ${(props) => (props.center ? "0 auto" : "0")};
 `;

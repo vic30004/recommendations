@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-:root{
-  --logo-font:'Chau Philomene One', sans-serif;
-  --primary-color: #4B55BE;
-  --header-font: 'Inter', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+:root {
+  --logo-font: "Chau Philomene One", sans-serif;
+  --primary-color: #4b55be;
+  --header-font: "Inter", sans-serif;
+  --light-primary-color: #b4b9e6;
 }
 
 body {
@@ -11,5 +12,3 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
-
