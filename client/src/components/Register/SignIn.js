@@ -2,12 +2,19 @@ import React from "react";
 import { Form } from "../../common/Form";
 import { InputBuilder, Button } from "../../common";
 import useForm from "../../hooks/UseForm";
+import { gql, useQuery } from '@apollo/client';
+
+const SIGN_IN = gql`
+
+
+`
 
 const SignIn = () => {
   const [formData, setFormData] = useForm({
     username: "",
     password: "",
   });
+
   const {username, password} = formData
   return (
     <Form>
