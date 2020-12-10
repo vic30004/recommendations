@@ -6,6 +6,7 @@ const secret = process.env.JWTSECRET || "tejksn";
 // Gets all Recommendations
 module.exports = {
   recommendations: async (context) => {
+    console.log("running");
     return db("recommendation");
   },
 
