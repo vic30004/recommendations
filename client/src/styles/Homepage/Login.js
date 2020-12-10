@@ -3,10 +3,17 @@ import styled from "styled-components";
 export const LoginContainer = styled.section`
   background: var(--primary-color);
   width: 40%;
-  flex: 1;
+  flex: 1 2;
   display: flex;
   flex-flow: column;
   padding: 1rem;
+  @media only screen and (max-width: 600px) {
+    flex-basis: 20%;
+  }
+  @media only screen and (max-width: 440px) {
+    width: 91%;
+    overflow: auto;
+  }
 `;
 
 export const Nav = styled.div`

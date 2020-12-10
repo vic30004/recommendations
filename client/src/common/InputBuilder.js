@@ -1,11 +1,39 @@
-import React from "react";
-import { InputContainer } from "./Form";
+import React, { useEffect, useState } from "react";
+import { InputContainer,Input } from "./Form";
 
-export const InputBuilder = ({ title, type, placeholder, name, value }) => {
+export const InputBuilder = ({
+  title,
+  type,
+  placeholder,
+  name,
+  value,
+  setFormData,
+  marg
+}) => {
+  const [empty, setEmpty] = useState(true);
+
+  useEffect(() => {
+    if (value) {
+      setEmpty(false);
+    } else {
+      setEmpty(true);
+    }
+  }, [value]);
   return (
     <InputContainer>
-      <label>{title}</label>
-      <input type={type} placeholder={placeholder} name={name} value={value} />
+      <Input
+        type={type}
+        name={name}
+        value={value}
+        onChange={(e) => setFormData(e)}
+        marg={marg}
+      />
+      {empty ? (
+        <span className='empty'>{placeholder}</span>
+      ) : (
+        <span className='full'>{placeholder}</span>
+      )}
+      {/* <span>{placeholder}</span> */}
     </InputContainer>
   );
 };

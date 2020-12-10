@@ -3,12 +3,13 @@ import { Form } from "../../common/Form";
 import { InputBuilder, Button } from "../../common";
 import useForm from "../../hooks/UseForm";
 
-const SignIn = () => {
+const SignUp = () => {
   const [formData, setFormData] = useForm({
     username: "",
+    email: "",
     password: "",
   });
-  const {username, password} = formData
+  const { username, email, password } = formData;
   return (
     <Form>
       <InputBuilder
@@ -17,8 +18,17 @@ const SignIn = () => {
         placeholder='Username'
         name='username'
         value={username}
-        setFormData= {setFormData}
-        marg={'2rem'}
+        setFormData={setFormData}
+        marg={"1rem"}
+      />
+      <InputBuilder
+        title='email'
+        type='text'
+        placeholder='Email'
+        name='email'
+        value={email}
+        setFormData={setFormData}
+        marg={"0.75rem"}
       />
       <InputBuilder
         title='password'
@@ -26,18 +36,15 @@ const SignIn = () => {
         placeholder='Password'
         name='password'
         value={password}
-        setFormData= {setFormData}
-        marg={'2rem'}
-
-
+        setFormData={setFormData}
+        marg={"0.75rem"}
       />
 
-      <h5>Forgot your password?</h5>
       <Button backg='#fa607e' size='70%' inline center shadowC='#333'>
-        Login
+        Sign Up
       </Button>
     </Form>
   );
 };
 
-export default SignIn;
+export default SignUp;
