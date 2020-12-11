@@ -5,19 +5,29 @@ import useForm from "../../hooks/UseForm";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { ADD_USER } from "../../graphql";
 
-const SignUp = () => {
+const SignUp = ({ setError, setMessage }) => {
   const [formData, setFormData, reset] = useForm({
     username: "",
     email: "",
     password: "",
   });
+  const { username, email, password } = formData;
 
   const [
     addUser,
     { loading: mutationLoading, error: mutationError, data },
-  ] = useMutation(ADD_USER);
-
-  const { username, email, password } = formData;
+  ] = useMutation(ADD_USER, {
+    variables: {
+      username,
+      email,
+      password,
+    },
+    onError(err) {
+      console.log(err);
+      setError(true);
+      setMessage({ text: err.message, on: true });
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,15 +35,22 @@ const SignUp = () => {
       return;
     }
     try {
-      addUser({ variables: { username, email, password } });
+      addUser();
+      if (mutationError) {
+        setMessage({ text: "error", on: true });
+        return;
+      } else {
+        setMessage({ text: "Signed up!", on: true });
+      }
     } catch (error) {
-      console.log(addUser.error);
+      return;
     }
     reset();
   };
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
+      {mutationError && <p>try again</p>}
       <InputBuilder
         title='username'
         type='text'
@@ -62,7 +79,7 @@ const SignUp = () => {
         marg={"0.75rem"}
       />
       <Button backg='#fa607e' size='70%' inline center shadowC='#333'>
-        {addUser.loading ? "Loading..." : "Sign Up"}
+        {mutationLoading ? "Loading..." : "Sign Up"}
       </Button>
     </Form>
   );

@@ -5,7 +5,7 @@ import useToggle from "../../hooks/useToggle";
 import { LoginContainer, Nav, FormContainer } from "../../styles/Homepage";
 import SignIn from "../Register/SignIn";
 import SignUp from "../Register/SignUp";
-const Login = () => {
+const Login = ({ setError, setMessage }) => {
   const [user, setUser, toggle] = useToggle(true);
 
   return (
@@ -19,7 +19,11 @@ const Login = () => {
       <FormContainer>
         <h3>Welcome !</h3>
         {user ? <p>Sign in to your account</p> : <p>Create an account</p>}
-        {user ? <SignIn /> : <SignUp />}
+        {user ? (
+          <SignIn setMessage={setMessage} setError={setError} />
+        ) : (
+          <SignUp setMessage={setMessage} setError={setError} />
+        )}
       </FormContainer>
     </LoginContainer>
   );

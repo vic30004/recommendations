@@ -24,13 +24,23 @@ module.exports = {
 
   addUser: async ({ username, email, password }) => {
     const hashPass = await bcrypt.hash(password, 12);
+    const re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    if (!re.test(password)) {
+      return new Error(
+        "Passowrd must be atleast 6 characters long, must contain atleast one number, one lowercase letter and one upper case letter"
+      );
+    }
     try {
       const query = await db("users")
         .insert({ username, email, password: hashPass })
         .returning("*");
       return query;
     } catch (error) {
-      console.log(error);
+      if (error.code === "23505" && error.detail.includes("email")) {
+        return new Error("This email is already in use");
+      } else if (error.code === "23505" && error.detail.includes("username")) {
+        return new Error("This username is taken");
+      }
       return error;
     }
   },
