@@ -30,6 +30,12 @@ module.exports = {
         "Passowrd must be atleast 6 characters long, must contain atleast one number, one lowercase letter and one upper case letter"
       );
     }
+
+    try {
+      let checkEmail =new MailAddress(email).Address
+    } catch (error) {
+      return new Error('Please enter a valid email')
+    }
     try {
       const query = await db("users")
         .insert({ username, email, password: hashPass })

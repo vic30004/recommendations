@@ -2,11 +2,11 @@ import React from "react";
 import { Border } from "../../styles/Homepage";
 import About from "./About";
 import Login from "./Login";
-export const BorderContainer = ({ setError, setMessage }) => {
+export const BorderContainer = () => {
   return (
     <Border>
       <About />
-      <Login setMessage={setMessage} setError={setError} />
+      <Login />
     </Border>
   );
 };

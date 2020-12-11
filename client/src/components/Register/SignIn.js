@@ -2,27 +2,52 @@ import React from "react";
 import { Form } from "../../common/Form";
 import { InputBuilder, Button } from "../../common";
 import useForm from "../../hooks/UseForm";
-import { gql, useQuery,useMutation } from "@apollo/client";
-import { ADD_USER } from "../../graphql";
+import { gql, useQuery, useMutation } from "@apollo/client";
+import { ADD_USER, LOGIN_USER } from "../../graphql";
 
-
-
-const SignIn = () => {
+const SignIn = ({ setMessage, setError }) => {
   const [formData, setFormData] = useForm({
     username: "",
     password: "",
   });
-  const {username, password} = formData
+
+  const { username, password } = formData;
+
+  const [
+    loginUser,
+    { loading: mutationLoading, error: mutationError },
+  ] = useMutation(LOGIN_USER, {
+    variables: {
+      username,
+      password,
+    },
+    onError(err) {
+      setError(true);
+      setMessage(err.message);
+    },
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = await loginUser();
+
+    if (!mutationError) {
+      let token = user.data.loginUser.token;
+      localStorage["token"] = token;
+      setMessage("Logged in!");
+    }
+  };
+
   return (
-    <Form>
+    <Form onSubmit={(e) => handleSubmit(e)}>
       <InputBuilder
         title='username'
         type='text'
         placeholder='Username'
         name='username'
         value={username}
-        setFormData= {setFormData}
-        marg={'2rem'}
+        setFormData={setFormData}
+        marg={"2rem"}
       />
       <InputBuilder
         title='password'
@@ -30,15 +55,13 @@ const SignIn = () => {
         placeholder='Password'
         name='password'
         value={password}
-        setFormData= {setFormData}
-        marg={'2rem'}
-
-
+        setFormData={setFormData}
+        marg={"2rem"}
       />
 
       <h5>Forgot your password?</h5>
       <Button backg='#fa607e' size='70%' inline center shadowC='#333'>
-        Login
+        {mutationLoading ? "Loading..." : "Login"}
       </Button>
     </Form>
   );

@@ -23,9 +23,8 @@ const SignUp = ({ setError, setMessage }) => {
       password,
     },
     onError(err) {
-      console.log(err);
       setError(true);
-      setMessage({ text: err.message, on: true });
+      setMessage(err.message);
     },
   });
 
@@ -36,21 +35,17 @@ const SignUp = ({ setError, setMessage }) => {
     }
     try {
       addUser();
-      if (mutationError) {
-        setMessage({ text: "error", on: true });
-        return;
-      } else {
-        setMessage({ text: "Signed up!", on: true });
-      }
     } catch (error) {
-      return;
+      console.log(error);
     }
-    reset();
+    if (!mutationError) {
+      setMessage("Account created!");
+      reset();
+    }
   };
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
-      {mutationError && <p>try again</p>}
       <InputBuilder
         title='username'
         type='text'

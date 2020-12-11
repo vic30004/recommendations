@@ -1,12 +1,25 @@
-import React from "react";
-import { Button } from "../../common";
+import React, { useState, useEffect } from "react";
+import { Button, Message } from "../../common";
 import useToggle from "../../hooks/useToggle";
-
 import { LoginContainer, Nav, FormContainer } from "../../styles/Homepage";
 import SignIn from "../Register/SignIn";
 import SignUp from "../Register/SignUp";
-const Login = ({ setError, setMessage }) => {
+const Login = () => {
   const [user, setUser, toggle] = useToggle(true);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useToggle();
+
+  useEffect(() => {
+    if (message) {
+      setInterval(() => {
+        setMessage("");
+        setError(false);
+      }, 10000);
+    }
+    return () => {
+      return;
+    };
+  }, [message]);
 
   return (
     <LoginContainer>
@@ -18,9 +31,18 @@ const Login = ({ setError, setMessage }) => {
 
       <FormContainer>
         <h3>Welcome !</h3>
+        {message ? (
+          <Message
+            error={error}
+            message={message}
+            on={message ? true : false}
+          />
+        ) : (
+          ""
+        )}
         {user ? <p>Sign in to your account</p> : <p>Create an account</p>}
         {user ? (
-          <SignIn setMessage={setMessage} setError={setError} />
+          <SignIn setError={setError} setMessage={setMessage} />
         ) : (
           <SignUp setMessage={setMessage} setError={setError} />
         )}
