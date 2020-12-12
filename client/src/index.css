@@ -11,4 +11,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: rgb(75,85,190);
+  background: linear-gradient(135deg, rgba(75,85,190,1) 20%, rgba(221,114,145,1) 29%, rgba(239,211,164,1) 66%) no-repeat;
 }

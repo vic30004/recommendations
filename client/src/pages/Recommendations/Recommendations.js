@@ -1,22 +1,23 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import React, { useEffect } from "react";
+import {
+  Controls,
+  AddSection,
+  Recommendation,
+  UpdatesSections,
+} from "../../components/Recommendations/";
+import { MainContainer } from "../../styles/Recommendations/Recommendations";
 
-const GET_RECOMMENDATIONS = gql`
-  {
-    recommendations {
-      title
-    }
-  }
-`;
-
-const Recommendations = () => {
-  const { loading, error, data } = useQuery(GET_RECOMMENDATIONS);
-
-  if (loading) return "loading...";
-  if (error) return `Error! ${error.message}`;
-  console.log(data);
-
-  return <div>hello</div>;
+const Recommendations = (props) => {
+  return (
+    <>
+      <Controls />
+      <MainContainer>
+        <AddSection />
+        <Recommendation />
+        <UpdatesSections />
+      </MainContainer>
+    </>
+  );
 };
 
 export default Recommendations;
