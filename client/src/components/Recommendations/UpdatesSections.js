@@ -1,5 +1,8 @@
 import React from "react";
+import { UpdateContainerBuilder } from "../../common/UpdateContainerBuilder";
+import { UpdatesContainer } from "../../styles/Recommendations";
 
 export const UpdatesSections = () => {
-  return <div>hello</div>;
+  
+  return <UpdateContainerBuilder title={'Recent Recommendations'}/>
 };
