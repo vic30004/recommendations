@@ -42,7 +42,9 @@ module.exports = {
     const { token } = await context();
     if (token) {
       const user = verify(token, secret);
+
       const user_id = user[0].id;
+
       try {
         const query = await db("recommendation")
           .insert({ title, description, category, main_picture, user_id })

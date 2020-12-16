@@ -1,9 +1,13 @@
 import { gql, useQuery } from "@apollo/client";
 
-const GET_RECOMMENDATIONS = gql`
+export const GET_RECOMMENDATIONS = gql`
   {
     recommendations {
+      id
       title
+      description
+      category
+      main_picture
     }
   }
 `;
