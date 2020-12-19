@@ -4,7 +4,7 @@ export const RecommendationContainer = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: center;
-  width: 50%;
+  width: 45%;
 `;
 
 export const MainContainer = styled.section`
@@ -23,20 +23,21 @@ export const RecommendationCard = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding: 0.7rem;
+  padding: 2rem 0.7rem;
 
   .img-container {
     position: relative;
     img {
       position: relative;
-      width: 500px;
+      width: 620px;
+      border-radius: 5px;
     }
     span {
       position: absolute;
       top: 15px;
       left: 15px;
       color: white;
-      background: red;
+      background: #ed586c;
       padding: 0.2rem 0.4rem;
       border-radius: 10px;
       font-weight: bold;

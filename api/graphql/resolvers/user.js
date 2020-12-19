@@ -14,9 +14,10 @@ module.exports = {
 
   user: async (id) => {
     let num = id.id;
+    console.log(num);
     try {
       const items = await db("users").where({ id: num });
-      return items;
+      return { ...items[0] };
     } catch (error) {
       return error;
     }

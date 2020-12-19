@@ -8,6 +8,8 @@ export const GET_RECOMMENDATIONS = gql`
       description
       category
       main_picture
+      follow
+      user_id
     }
   }
 `;

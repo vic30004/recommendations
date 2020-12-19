@@ -16,7 +16,7 @@ type Authpayload{
 }`
 
 exports.UserQueries = `
-    user(id:Int!):[User]
+    user(id:Int!):User
     users:[User]
 `;
 

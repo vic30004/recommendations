@@ -9,6 +9,14 @@ export const ADD_USER = gql`
   }
 `;
 
+export const GET_USER = gql`
+  query($id: Int!) {
+    user(id: $id) {
+      username
+    }
+  }
+`;
+
 export const LOGIN_USER = gql`
   mutation($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {

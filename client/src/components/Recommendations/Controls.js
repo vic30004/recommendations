@@ -14,7 +14,9 @@ export const Controls = () => {
       <ul>
         <li>Profile</li>
         <li>Contact</li>
-        <li className='grow'><input type="text"/> click me</li>
+        <li className='grow'>
+          <input type='text' /> <i class='fas fa-search'></i>
+        </li>
       </ul>
     </ControlsContainer>
   );

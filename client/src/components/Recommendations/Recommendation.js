@@ -6,9 +6,10 @@ import {
 import { useQuery } from "@apollo/client";
 import { GET_RECOMMENDATIONS } from "../../graphql/";
 import { Image, Placeholder } from "cloudinary-react";
+import RecommendationContainerItems from "./RecomendationContentItems";
 export const Recommendation = () => {
-  const { data, loading, error } = useQuery(GET_RECOMMENDATIONS);
-  console.log(data);
+  const { data, loading, error, fetchMore } = useQuery(GET_RECOMMENDATIONS);
+
   return (
     <>
       {loading ? (
@@ -21,7 +22,7 @@ export const Recommendation = () => {
                 <Image
                   cloud_name='dawyijhjw'
                   publicId={item.main_picture}
-                  width='500'
+                  width='620'
                   crop='limit'
                   quality='auto'
                   responsive='true'
@@ -33,6 +34,13 @@ export const Recommendation = () => {
                 </Image>
                 <span>{item.category}</span>
               </div>
+              <RecommendationContainerItems
+                title={item.title}
+                id={item.user_id}
+                category={item.category}
+                description={item.description}
+                follow={item.follow}
+              />
             </RecommendationCard>
           ))}
         </RecommendationContainer>
