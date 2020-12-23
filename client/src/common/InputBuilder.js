@@ -8,7 +8,8 @@ export const InputBuilder = ({
   name,
   value,
   setFormData,
-  marg
+  marg,
+  red
 }) => {
   const [empty, setEmpty] = useState(true);
 
@@ -27,6 +28,7 @@ export const InputBuilder = ({
         value={value}
         onChange={(e) => setFormData(e)}
         marg={marg}
+        red={red}
       />
       {empty ? (
         <span className='empty'>{placeholder}</span>

@@ -10,6 +10,7 @@ export const AddSectionContainer = styled.aside`
   align-items: center;
   border-radius: 5px;
   position: sticky;
+  cursor: pointer;
   top: 0;
   left: 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
@@ -18,4 +19,17 @@ export const AddSectionContainer = styled.aside`
   font-family: var(--header-font);
   font-size: 1rem;
   font-weight: bold;
+`;
+
+export const AddWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+  max-width: 100%;
+  width: 500px;
+  background: var(--primary-color);
+  box-shadow: -3px 5px 10px #333;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--light-primary-color);
+  padding: 2rem 1rem;
 `;

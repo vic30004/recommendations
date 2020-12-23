@@ -39,11 +39,11 @@ export const InputContainer = styled.div`
   input:focus + span {
     transform: translateY(-450%);
   }
- 
 `;
 
 export const Input = styled.input`
-  background-color: #3d46a7;
+  background-color: ${(props) =>
+    props.red ? "rgba(221, 114, 145, 1)" : "#3d46a7"};
   box-shadow: inset 1px 1px 1px #000;
   border: none;
   outline: none;
