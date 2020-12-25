@@ -13,3 +13,29 @@ export const GET_RECOMMENDATIONS = gql`
     }
   }
 `;
+
+export const ADD_RECOMMENDATION = gql`
+  mutation(
+    $title: String!
+    $category: String!
+    $description: String!
+    $main_picture: String!
+  ) {
+    addRecommendations(
+      title: $title
+      category: $category
+      description: $description
+      main_picture: $main_picture
+    ) {
+      recommendation {
+        title
+        category
+        description
+        main_picture
+      }
+      user {
+        username
+      }
+    }
+  }
+`;

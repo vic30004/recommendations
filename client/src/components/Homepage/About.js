@@ -2,6 +2,8 @@ import React from "react";
 import { IntroContainer, PhotoContainer } from "../../styles/Homepage";
 import { Image, Placeholder } from "cloudinary-react";
 
+
+
 const About = () => {
   return (
     <IntroContainer>

@@ -2,6 +2,8 @@ import React from "react";
 import { AddWrapper } from "../../styles/Recommendations";
 import { Button, Form, InputBuilder } from "../../common/";
 import useFrom from "../../hooks/UseForm";
+import { useMutation } from "@apollo/client";
+import { ADD_RECOMMENDATION } from "../../graphql";
 
 const AddContainer = () => {
   const [formData, handleChange, reset, setFormData] = useFrom({
@@ -11,7 +13,20 @@ const AddContainer = () => {
     main_picture: "",
   });
   const { title, category, description, main_picture } = formData;
-
+  const [
+    addRecommendation,
+    { loading: mutationLoading, error: mutationError, data },
+  ] = useMutation(ADD_RECOMMENDATION, {
+    variables: {
+      title,
+      category,
+      description,
+      main_picture,
+    },
+    onError(err) {
+      console.log(err);
+    },
+  });
 
   let openWidget = (event) => {
     event.preventDefault();
@@ -32,6 +47,13 @@ const AddContainer = () => {
         }
       }
     );
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!title || !category || !description || !main_picture) {
+      return;
+    }
+    addRecommendation();
   };
 
   return (
@@ -77,8 +99,10 @@ const AddContainer = () => {
           size={"70%"}
           backg={"rgba(221, 114, 145, 1)"}
           shadowC={"#333"}
+          onClick={handleSubmit}
+          disabled={mutationLoading}
         >
-          Create
+          {mutationLoading ? "loading..." : "Create"}
         </Button>
       </Form>
     </AddWrapper>
