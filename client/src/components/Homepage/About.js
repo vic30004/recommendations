@@ -12,7 +12,7 @@ const About = () => {
       <PhotoContainer>
         <Image
           cloud_name='dawyijhjw'
-          publicId='recommendation/Slice_3-removebg-preview_nqzy8m'
+          publicId='recommendation/Slice_3-removebg-preview_nqzy8m_n5hoaz'
           width='500'
           crop='limit'
           quality='auto'

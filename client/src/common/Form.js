@@ -46,7 +46,8 @@ export const InputContainer = styled.div`
   }
   .full {
     ${spanSetUp}
-    transform: translateY(-450%);
+    transform: ${(props) =>
+      props.Area ? "translateY(-520%)" : "translateY(-450%)"};
   }
 
   input:focus + span {

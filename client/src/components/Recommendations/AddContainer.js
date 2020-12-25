@@ -4,13 +4,36 @@ import { Button, Form, InputBuilder } from "../../common/";
 import useFrom from "../../hooks/UseForm";
 
 const AddContainer = () => {
-  const [formData, handleChange, reset] = useFrom({
+  const [formData, handleChange, reset, setFormData] = useFrom({
     title: "",
     category: "",
     description: "",
     main_picture: "",
   });
   const { title, category, description, main_picture } = formData;
+
+
+  let openWidget = (event) => {
+    event.preventDefault();
+    window.cloudinary.openUploadWidget(
+      {
+        cloudName: process.env.REACT_APP_CLOUDINARYCLOUD,
+        uploadPreset: process.env.REACT_APP_CLOUDINARYPRESET,
+        sources: ["local", "url", "facebook", "dropbox"],
+        cropping: true,
+      },
+      (error, result) => {
+        if (error) {
+          console.log(error);
+          throw error;
+        }
+        if (result.event === "success") {
+          setFormData({ ...formData, ["main_picture"]: result.info.public_id });
+        }
+      }
+    );
+  };
+
   return (
     <AddWrapper>
       <h2>New Recommendation</h2>
@@ -39,13 +62,15 @@ const AddContainer = () => {
           setFormData={handleChange}
         ></InputBuilder>
 
-        <InputBuilder
-          type='text'
-          name='main_picture'
-          placeholder='Picture'
-          value={main_picture}
-          setFormData={handleChange}
-        />
+        <Button
+          center
+          marg={"0"}
+          size={"70%"}
+          backg={main_picture ? "rgba(146, 204, 194, 1)" : ""}
+          onClick={openWidget}
+        >
+          {main_picture ? "Upload Complete" : "Upload Photo"}
+        </Button>
 
         <Button
           center
