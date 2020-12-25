@@ -10,6 +10,7 @@ export const GET_RECOMMENDATIONS = gql`
       main_picture
       follow
       user_id
+      created_at
     }
   }
 `;

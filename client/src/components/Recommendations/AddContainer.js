@@ -3,9 +3,9 @@ import { AddWrapper } from "../../styles/Recommendations";
 import { Button, Form, InputBuilder } from "../../common/";
 import useFrom from "../../hooks/UseForm";
 import { useMutation } from "@apollo/client";
-import { ADD_RECOMMENDATION } from "../../graphql";
+import { ADD_RECOMMENDATION, GET_RECOMMENDATIONS } from "../../graphql";
 
-const AddContainer = () => {
+const AddContainer = ({ toggle }) => {
   const [formData, handleChange, reset, setFormData] = useFrom({
     title: "",
     category: "",
@@ -23,6 +23,9 @@ const AddContainer = () => {
       description,
       main_picture,
     },
+
+    // Then re-run
+    refetchQueries: [{ query: GET_RECOMMENDATIONS }],
     onError(err) {
       console.log(err);
     },
@@ -48,12 +51,16 @@ const AddContainer = () => {
       }
     );
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!title || !category || !description || !main_picture) {
       return;
     }
-    addRecommendation();
+    await addRecommendation();
+    if (!mutationError) {
+      reset();
+    }
+    toggle();
   };
 
   return (

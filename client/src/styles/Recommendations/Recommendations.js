@@ -24,6 +24,7 @@ export const RecommendationCard = styled.div`
   flex-flow: column;
   align-items: center;
   padding: 2rem 0.7rem;
+  margin-bottom: 2rem;
 
   .img-container {
     position: relative;

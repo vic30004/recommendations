@@ -9,6 +9,7 @@ type Recommendation{
     main_picture: String
     follow:Int!
     user_id: Int!
+    created_at:String
 }
 
 type RecommendationWithUser{

@@ -6,8 +6,10 @@ const secret = process.env.JWTSECRET || "tejksn";
 // Gets all Recommendations
 module.exports = {
   recommendations: async (context) => {
-    console.log("running");
-    return db("recommendation");
+    return db("recommendation").orderBy([{
+      column: "created_at",
+      order: "desc",
+    }]);
   },
 
   // Filter recommencation by title, cat, user_id

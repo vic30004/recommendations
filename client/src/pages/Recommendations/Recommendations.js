@@ -16,7 +16,7 @@ const Recommendations = (props) => {
     <>
       {modal ? (
         <Modal>
-          <AddContainer />
+          <AddContainer toggle={toggle}/>
         </Modal>
       ) : (
         ""

@@ -11,8 +11,8 @@ export const AddSectionContainer = styled.aside`
   border-radius: 5px;
   position: sticky;
   cursor: pointer;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
     0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
 
