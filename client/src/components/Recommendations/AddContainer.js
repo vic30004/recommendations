@@ -1,6 +1,6 @@
 import React from "react";
 import { AddWrapper } from "../../styles/Recommendations";
-import { Button, InputBuilder } from "../../common/";
+import { Button, Form, InputBuilder } from "../../common/";
 import useFrom from "../../hooks/UseForm";
 
 const AddContainer = () => {
@@ -14,7 +14,7 @@ const AddContainer = () => {
   return (
     <AddWrapper>
       <h2>New Recommendation</h2>
-      <form>
+      <Form>
         <InputBuilder
           type='text'
           name='title'
@@ -28,14 +28,17 @@ const AddContainer = () => {
           placeholder='Category'
           value={category}
           setFormData={handleChange}
+          textArea={false}
         />
         <InputBuilder
-          type='text'
           name='description'
+          id='description'
           placeholder='Description'
           value={description}
+          textArea={true}
           setFormData={handleChange}
-        />
+        ></InputBuilder>
+
         <InputBuilder
           type='text'
           name='main_picture'
@@ -44,8 +47,15 @@ const AddContainer = () => {
           setFormData={handleChange}
         />
 
-        <Button center>Create</Button>
-      </form>
+        <Button
+          center
+          size={"70%"}
+          backg={"rgba(221, 114, 145, 1)"}
+          shadowC={"#333"}
+        >
+          Create
+        </Button>
+      </Form>
     </AddWrapper>
   );
 };

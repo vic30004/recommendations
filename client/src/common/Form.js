@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+const inputTextArea = `  
+box-shadow: inset 1px 1px 1px #000;
+border: none;
+outline: none;
+/* padding: 0.7rem 1rem; */
+color: #fff;
+width: 95%;
+height: 35px;
+padding: 0 0.5rem;
+font-family: var(--header-font);
+margin-bottom: 1rem;
+`;
 const spanSetUp = `
 align-self: flex-start;
 color: var(--light-primary-color);
@@ -28,8 +40,9 @@ export const InputContainer = styled.div`
   width: 70%;
   margin: 0 auto;
   .empty {
-    transform: translateY(-230%);
-    ${spanSetUp}
+    transform: ${(props) =>
+      props.Area ? "translateY(-350%)" : "translateY(-230%)"};
+    ${spanSetUp};
   }
   .full {
     ${spanSetUp}
@@ -39,20 +52,24 @@ export const InputContainer = styled.div`
   input:focus + span {
     transform: translateY(-450%);
   }
+  textarea:focus + span {
+    transform: translateY(-520%);
+  }
 `;
 
 export const Input = styled.input`
+  ${inputTextArea}
+  margin-top: ${(props) => (props.marg ? props.marg : "1rem")};
   background-color: ${(props) =>
     props.red ? "rgba(221, 114, 145, 1)" : "#3d46a7"};
-  box-shadow: inset 1px 1px 1px #000;
-  border: none;
-  outline: none;
-  /* padding: 0.7rem 1rem; */
-  color: #fff;
-  width: 95%;
-  height: 35px;
-  padding: 0 0.5rem;
-  font-family: var(--header-font);
-  margin-bottom: 1rem;
+`;
+export const TextArea = styled.textarea`
+  ${inputTextArea}
   margin-top: ${(props) => (props.marg ? props.marg : "1rem")};
+  background-color: ${(props) =>
+    props.red ? "rgba(221, 114, 145, 1)" : "#3d46a7"};
+  /* height: 50px; */
+  resize: none;
+  height: 50px;
+  padding-top: 0.2rem;
 `;

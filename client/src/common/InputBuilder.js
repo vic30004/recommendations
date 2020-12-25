@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { InputContainer,Input } from "./Form";
+import { InputContainer, Input, TextArea } from "./Form";
 
 export const InputBuilder = ({
   title,
@@ -9,7 +9,8 @@ export const InputBuilder = ({
   value,
   setFormData,
   marg,
-  red
+  red,
+  textArea,
 }) => {
   const [empty, setEmpty] = useState(true);
 
@@ -20,16 +21,37 @@ export const InputBuilder = ({
       setEmpty(true);
     }
   }, [value]);
-  return (
-    <InputContainer>
-      <Input
+  const genInputType = (type) => {
+    console.log(type);
+    if (!type) {
+      return (
+        <Input
+          type={type}
+          name={name}
+          value={value}
+          onChange={(e) => setFormData(e)}
+          marg={marg}
+          red={red}
+        />
+      );
+    }
+    return (
+      <TextArea
         type={type}
         name={name}
         value={value}
         onChange={(e) => setFormData(e)}
         marg={marg}
+        rows='5'
         red={red}
+        Area
       />
+    );
+  };
+
+  return (
+    <InputContainer Area={textArea}>
+      {genInputType(textArea)}
       {empty ? (
         <span className='empty'>{placeholder}</span>
       ) : (
