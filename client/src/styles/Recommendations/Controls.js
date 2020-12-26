@@ -40,5 +40,8 @@ export const ControlsContainer = styled.div`
         padding: 0 0.3rem;
       }
     }
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
   }
 `;

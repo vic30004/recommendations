@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const AddSectionContainer = styled.aside`
   background: #fff;
   height: 70px;
-  /* width: 15%; */
   display: flex;
   justify-content: center;
   padding: 0.75rem 1rem;
@@ -19,6 +18,29 @@ export const AddSectionContainer = styled.aside`
   font-family: var(--header-font);
   font-size: 1rem;
   font-weight: bold;
+
+  #small {
+    display: none;
+  }
+
+  @media only screen and (max-width: 1140px) {
+    position: fixed;
+    top: initial;
+    left: initial;
+    bottom: 20px;
+    right: 20px;
+    z-index: 12;
+    border-radius: 50%;
+    width: 25px;
+    height: 30px;
+    background: var(--third-color);
+    #large {
+      display: none;
+    }
+    #small {
+      display: block;
+    }
+  }
 `;
 
 export const AddWrapper = styled.div`

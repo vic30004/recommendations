@@ -23,4 +23,14 @@ export const ContentContainer = styled.div`
   width: 40%;
   align-items: center;
   margin: 0 auto;
+  @media only screen and (max-width: 1200px) {
+    width: 70%;
+  }
+  @media only screen and (max-width: 740px) {
+    width: 90%;
+  }
+  @media only screen and (max-width: 330px) {
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
 `;

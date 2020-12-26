@@ -5,6 +5,9 @@ export const RecommendationContainer = styled.div`
   flex-flow: column;
   justify-content: center;
   width: 45%;
+  @media only screen and (max-width: 580px) {
+    width: 80%;
+  }
 `;
 
 export const MainContainer = styled.section`
@@ -12,6 +15,12 @@ export const MainContainer = styled.section`
   justify-content: space-between;
   padding: 2rem;
   margin-top: 2rem;
+  height:100%;
+
+  @media only screen and (max-width: 1140px) {
+    justify-content: center;
+    /* position:relative; */
+  }
 `;
 
 export const RecommendationCard = styled.div`
@@ -25,13 +34,18 @@ export const RecommendationCard = styled.div`
   align-items: center;
   padding: 2rem 0.7rem;
   margin-bottom: 2rem;
-
+  max-width: 100%;
+  min-width: 200px;
+  @media only screen and (max-width: 440px) {
+    width: 300px;
+  }
   .img-container {
     position: relative;
     img {
       position: relative;
       width: 620px;
       border-radius: 5px;
+      max-width: 100%;
     }
     span {
       position: absolute;
