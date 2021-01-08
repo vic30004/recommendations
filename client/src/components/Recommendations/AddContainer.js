@@ -65,7 +65,13 @@ const AddContainer = ({ toggle }) => {
 
   return (
     <AddWrapper>
-      <h2>New Recommendation</h2>
+      <div className='top-container'>
+        <h3 className='close-btn' onClick={toggle}>
+          <i class='fas fa-times-circle'></i>
+        </h3>
+        <h2>New Recommendation</h2>
+      </div>
+
       <Form>
         <InputBuilder
           type='text'

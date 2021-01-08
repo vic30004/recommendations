@@ -54,4 +54,14 @@ export const AddWrapper = styled.div`
   text-align: center;
   color: var(--light-primary-color);
   padding: 2rem 1rem;
+  .top-container {
+    display: flex;
+    flex-flow: column;
+    & > h3 {
+      text-align: right;
+      padding-right: 1rem;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Modal from "../../common/Modal.js";
 import {
   Controls,
@@ -12,18 +12,19 @@ import { MainContainer } from "../../styles/Recommendations/Recommendations";
 
 const Recommendations = (props) => {
   const [modal, setModal, toggle] = useToggle();
+
   return (
     <>
       {modal ? (
         <Modal>
-          <AddContainer toggle={toggle}/>
+          <AddContainer toggle={toggle} />
         </Modal>
       ) : (
         ""
       )}
       <Controls />
       <MainContainer>
-        <AddSection toggle={toggle}/>
+        <AddSection toggle={toggle} />
         <Recommendation />
         <UpdatesSections />
       </MainContainer>
