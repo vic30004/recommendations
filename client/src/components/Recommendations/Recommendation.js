@@ -14,7 +14,7 @@ export const Recommendation = () => {
     <>
       {loading ? (
         <h2>loading...</h2>
-      ) : data.recommendations.length > 0 ? (
+      ) : data ? (
         <RecommendationContainer>
           {data.recommendations.map((item, i) => (
             <RecommendationCard key={i}>

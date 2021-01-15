@@ -29,14 +29,30 @@ export const ADD_RECOMMENDATION = gql`
       main_picture: $main_picture
     ) {
       recommendation {
-        title
-        category
-        description
-        main_picture
+        id
       }
       user {
         username
       }
+    }
+  }
+`;
+
+export const ADD_ITEMS = gql`
+  mutation(
+    $title: String!
+    $description: String!
+    $cover_picture: String!
+    $recommendation_id: ID!
+  ) {
+    addItems(
+      title: $title
+      description: $description
+      cover_picture: $cover_picture
+      recommendation_id: $recommendation_id
+    ) {
+      id
+      title
     }
   }
 `;
