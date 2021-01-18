@@ -4,13 +4,20 @@ require("dotenv").config();
 const secret = process.env.JWTSECRET || "tejksn";
 
 module.exports = {
-  showItems: async ({ recommendation_id }) => {
-    try {
-      const query = db("items").where({ recommendation_id });
-      return query;
-    } catch (error) {
-      throw error;
+  showItems: async ({ recommendation_id }, context) => {
+    const {token} = await context();
+    if (token) {
+      try {
+        const query = db("items").where({ recommendation_id });
+        if (query.length > 0) {
+          return query;
+        }
+        return new Error("No Content Found");
+      } catch (error) {
+        throw error;
+      }
     }
+    return new Error("Please sign in to view content");
   },
 
   addItems: async (

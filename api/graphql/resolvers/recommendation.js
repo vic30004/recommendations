@@ -1,3 +1,4 @@
+const knex = require("../../db/knex");
 const db = require("../../db/knex");
 const verify = require("../../middleware/verifyToken");
 require("dotenv").config();
@@ -6,12 +7,32 @@ const secret = process.env.JWTSECRET || "tejksn";
 // Gets all Recommendations
 module.exports = {
   recommendations: async (context) => {
-    return db("recommendation").orderBy([{
-      column: "created_at",
-      order: "desc",
-    }]);
+    return db("recommendation").orderBy([
+      {
+        column: "created_at",
+        order: "desc",
+      },
+    ]);
   },
 
+  getRecommendationById: async ({ id }, context) => {
+    const { token } = await context();
+    if (token) {
+      try {
+        const data = await db("recommendation").where({ id });
+        if (data.length > 0) {
+          return data;
+        }
+
+        return new Error("Recommendation Not Found");
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    }
+
+    return new Error("Please sign in");
+  },
   // Filter recommencation by title, cat, user_id
   recommendationFilter: async ({ title, category, user_id }, context) => {
     let res = {};

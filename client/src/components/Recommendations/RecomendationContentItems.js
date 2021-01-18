@@ -10,15 +10,10 @@ const RecomendationContentItems = ({
   description,
   follow,
 }) => {
-  console.log(typeof id);
   const { data, loading, error } = useQuery(GET_USER, {
     variables: { id },
   });
-  if (!error && !loading) {
-    console.log(data.user.username);
-  } else {
-    console.log(error);
-  }
+ 
   const limitText = (text, num) => {
     let temp = text.split(" ");
     if (temp.length > num) {

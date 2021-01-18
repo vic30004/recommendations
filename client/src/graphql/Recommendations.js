@@ -15,6 +15,21 @@ export const GET_RECOMMENDATIONS = gql`
   }
 `;
 
+export const GET_RECOMMENDATION_BY_ID = gql`
+  query($id: ID!) {
+    getRecommendationById(id: $id) {
+      id
+      title
+      description
+      category
+      main_picture
+      follow
+      user_id
+      created_at
+    }
+  }
+`;
+
 export const ADD_RECOMMENDATION = gql`
   mutation(
     $title: String!
