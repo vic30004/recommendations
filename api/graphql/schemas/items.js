@@ -10,7 +10,7 @@ type Items{
 `
 
 exports.ItemsQueries = `
-showItems(recommendation_id:Int): [Items]
+showItems(recommendation_id:Int!): [Items]
 `
 
 exports.ItemsMutation=`

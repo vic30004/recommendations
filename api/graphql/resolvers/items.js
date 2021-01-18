@@ -5,14 +5,12 @@ const secret = process.env.JWTSECRET || "tejksn";
 
 module.exports = {
   showItems: async ({ recommendation_id }, context) => {
-    const {token} = await context();
+    const { token } = await context();
     if (token) {
       try {
         const query = db("items").where({ recommendation_id });
-        if (query.length > 0) {
-          return query;
-        }
-        return new Error("No Content Found");
+        return query;
+
       } catch (error) {
         throw error;
       }

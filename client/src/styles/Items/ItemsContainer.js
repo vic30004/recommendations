@@ -6,6 +6,10 @@ export const ItemsContainer = styled.div`
   display: flex;
   background-color: var(--primary-color);
   flex-flow: column;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 `;
 
 export const ItemHeaderContainer = styled.section`

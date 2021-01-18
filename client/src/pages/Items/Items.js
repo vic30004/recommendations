@@ -21,7 +21,7 @@ const Items = (props) => {
   return (
     <ItemsContainer>
       <Header data={data} />
-      <Content />
+      <Content recommendation_id={parseInt(id)} />
     </ItemsContainer>
   );
 };

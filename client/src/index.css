@@ -5,13 +5,17 @@
   --primary-color: #4b55be;
   --header-font: "Inter", sans-serif;
   --light-primary-color: #b4b9e6;
-  --secondary-color:rgba(221, 114, 145, 1);
-  --third-color:#efd3a4;
+  --secondary-color: rgba(221, 114, 145, 1);
+  --third-color: #efd3a4;
 }
-
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   box-sizing: border-box;
   background: rgb(75, 85, 190);
   background: linear-gradient(
