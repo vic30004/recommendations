@@ -13,3 +13,18 @@ export const ModalContainer = styled.div`
   align-items: center;
   z-index: 99;
 `;
+
+export const ModalButton = styled.div`
+  position: fixed;
+  background-color: var(--third-color);
+  bottom: 20px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+`;

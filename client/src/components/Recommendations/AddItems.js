@@ -12,6 +12,7 @@ const AddItems = ({
   openWidget,
   mutationLoading,
   setFormData,
+  itemData
 }) => {
   return (
     <AddWrapper>
@@ -45,7 +46,7 @@ const AddItems = ({
           name={"itemsCoverPicture"}
           size={"70%"}
           backg={main_picture ? "rgba(146, 204, 194, 1)" : ""}
-          onClick={(e) => openWidget(e, setFormData, 'items')}
+          onClick={(e) => openWidget(e, setFormData, 'items', itemData)}
         >
           {main_picture ? "Upload Complete" : "Upload Photo"}
         </Button>

@@ -40,6 +40,7 @@ export const Recommendation = () => {
                 category={item.category}
                 description={item.description}
                 follow={item.follow}
+                recommendation_id={item.id}
               />
             </RecommendationCard>
           ))}

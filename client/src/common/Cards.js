@@ -3,6 +3,7 @@ import { Image, Placeholder } from "cloudinary-react";
 import { Card } from "./CardStyles/CardStyles";
 
 const Cards = ({ picture, title }) => {
+
   return (
     <Card>
       <Image
@@ -17,6 +18,7 @@ const Cards = ({ picture, title }) => {
         flag='prgressive'
         height='291'
       >
+
         <Placeholder type='pixelate' />
       </Image>
       <h3>{title}</h3>

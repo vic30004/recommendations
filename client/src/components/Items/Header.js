@@ -24,7 +24,7 @@ const Header = ({ data }) => {
             loading='lazy'
             format='webp'
             flag='prgressive'
-            effect='blur'
+            effect='blur:180'
             height='350'
           >
             <Placeholder type='pixelate' />
