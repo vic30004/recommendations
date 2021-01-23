@@ -18,6 +18,7 @@ type Authpayload{
 exports.UserQueries = `
     user(id:Int!):User
     users:[User]
+    loadUser: [User]
 `;
 
 exports.UserMutations = `

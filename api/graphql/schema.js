@@ -16,7 +16,7 @@ type RootQuery {
     ${recommendationSchema.RecommendationQueries}
     ${itemSchema.ItemsQueries}
     ${followSchema.FollowsQueries}
-
+    
 }
 
 type RootMutation{

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useReducer } from "react";
 import { Form } from "../../common/Form";
 import { InputBuilder, Button } from "../../common";
 import useForm from "../../hooks/UseForm";
@@ -32,6 +32,7 @@ const SignIn = ({ setMessage, setError }) => {
     const user = await loginUser();
 
     if (!mutationError) {
+ 
       let token = user.data.loginUser.token;
       localStorage["token"] = token;
       setMessage("Logged in!");

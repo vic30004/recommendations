@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   RecommendationContainer,
   RecommendationCard,
@@ -7,8 +7,12 @@ import { useQuery } from "@apollo/client";
 import { GET_RECOMMENDATIONS } from "../../graphql/";
 import { Image, Placeholder } from "cloudinary-react";
 import RecommendationContainerItems from "./RecomendationContentItems";
+import UserContext from "../../context/User/UserContext";
 export const Recommendation = () => {
   const { data, loading, error, fetchMore } = useQuery(GET_RECOMMENDATIONS);
+  const userContext = useContext(UserContext);
+  const { loadUser } = userContext;
+
 
   return (
     <>

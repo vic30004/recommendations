@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const app = express();
+const verify = require("../../middleware/verifyToken");
+
 require("dotenv").config();
 
 const secret = process.env.JWTSECRET || "tejksn";
@@ -20,6 +22,16 @@ module.exports = {
       return { ...items[0] };
     } catch (error) {
       return error;
+    }
+  },
+
+  loadUser: async ({}, context) => {
+    const { token } = await context();
+    if (token) {
+      const user = verify(token, secret);
+      return user;
+    } else {
+      return new Error("Auth credentials not provided");
     }
   },
 

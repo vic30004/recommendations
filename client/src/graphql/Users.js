@@ -24,3 +24,13 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const LOADUSER = gql`
+  {
+    loadUser {
+      id
+      username
+      email
+    }
+  }
+`;
