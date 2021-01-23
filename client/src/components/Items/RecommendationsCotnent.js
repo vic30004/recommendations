@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "../../graphql";
 
@@ -7,7 +7,8 @@ const RecommendationsCotnent = ({ id, category, follow }) => {
     variables: { id },
     suspend: false,
   });
-  console.log(data);
+
+
   return (
     <>
       <li>Category: {category}</li>

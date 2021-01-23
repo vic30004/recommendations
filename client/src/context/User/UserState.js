@@ -22,7 +22,6 @@ const UserState = (props) => {
     state.error.push(error);
   }
 
-  // state.user.push(data);
 
   const loadUser = () => {
     dispatch({

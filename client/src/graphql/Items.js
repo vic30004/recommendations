@@ -7,6 +7,7 @@ export const GET_ITEMS = gql`
       title
       description
       cover_picture
+      user_id
     }
   }
 `;
