@@ -5,7 +5,12 @@ import useToggle from "../../hooks/useToggle";
 import useForm from "../../hooks/UseForm";
 import { ItemsContainer } from "../../styles/Items";
 import { useQuery, useMutation } from "@apollo/client";
-import { ADD_ITEMS, GET_RECOMMENDATION_BY_ID, GET_ITEMS } from "../../graphql";
+import {
+  ADD_ITEMS,
+  GET_RECOMMENDATION_BY_ID,
+  GET_ITEMS,
+  DELETE_ITEMS,
+} from "../../graphql";
 import Modal from "../../common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
 import ModalTrigger from "../../common/ModalTrigger";
@@ -41,6 +46,17 @@ const Items = (props) => {
       console.log(error);
     }
   }
+
+  const [
+    deleteItem,
+    { loading: deleteLoading, error: deleteError },
+  ] = useMutation(DELETE_ITEMS, {
+    refetchQueries: [{ query: GET_ITEMS, variables: { recommendation_id } }],
+
+    onError(err) {
+      console.log(err);
+    },
+  });
 
   const [
     addItems,
@@ -79,6 +95,7 @@ const Items = (props) => {
       <Header data={data} />
       {!contentLoading ? (
         <Content
+          deleteItem={deleteItem}
           data={contentData}
           loading={contentLoading}
           error={contentError}

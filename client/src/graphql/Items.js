@@ -8,6 +8,15 @@ export const GET_ITEMS = gql`
       description
       cover_picture
       user_id
+      recommendation_id
+    }
+  }
+`;
+
+export const DELETE_ITEMS = gql`
+  mutation($id: ID!, $recommendation_id: ID!) {
+    deleteItem(id: $id, recommendation_id: $recommendation_id) {
+      message
     }
   }
 `;

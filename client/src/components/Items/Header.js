@@ -21,10 +21,11 @@ const Header = ({ data }) => {
             crop='fill'
             quality='auto'
             responsive='true'
+            responsiveUseBreakpoints="true"
             loading='lazy'
             format='webp'
             flag='prgressive'
-            effect='blur:180'
+            effect='blur:120'
             height='350'
           >
             <Placeholder type='pixelate' />
