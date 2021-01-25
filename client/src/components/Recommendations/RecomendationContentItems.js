@@ -19,18 +19,6 @@ const RecomendationContentItems = ({
   recommendation_id,
   user,
 }) => {
-  const [
-    followRecommendation,
-    { loading: muationLoading, error: mutationError },
-  ] = useMutation(FOLLOW, {
-    refetchQueries: [
-      { query: GET_RECOMMENDATIONS },
-      { query: SHOWFOLLOWERS, variables: { recommendation_id } },
-    ],
-    onError(err) {
-      console.log(err);
-    },
-  });
   const { data, loading, error } = useQuery(GET_USER, {
     variables: { id },
   });
@@ -46,16 +34,33 @@ const RecomendationContentItems = ({
       console.log(err);
     },
   });
+  const [
+    followRecommendation,
+    { loading: muationLoading, error: mutationError },
+  ] = useMutation(FOLLOW, {
+    refetchQueries: [
+      { query: GET_RECOMMENDATIONS },
+      { query: SHOWFOLLOWERS, variables: { recommendation_id } },
+    ],
+    onError(err) {
+      console.log(err);
+    },
+  });
 
   const filterFollowers = (arr) => {
     const userId = user.loadUser[0].id;
-    if (!arr) return;
-    if (arr.showFollowesForRecommendation.length === 0) return;
+    console.log({ arr });
+    if (!arr) {
+      return setFollowing(false);
+    }
+    if (arr.showFollowesForRecommendation.length < 1) {
+      setFollowing(false);
+    }
     const res = arr.showFollowesForRecommendation.filter(
       (user) => user.user_id === userId
     );
     if (res.length > 0) {
-      return setFollowing(res.length > 0);
+      return setFollowing(true);
     }
   };
 
@@ -69,9 +74,10 @@ const RecomendationContentItems = ({
 
   useEffect(() => {
     if (!followersLoading && followers) {
+      console.log({ followers });
       filterFollowers(followers);
     }
-  }, [followersLoading, muationLoading]);
+  }, [followers, muationLoading]);
 
   return (
     <Fragment>
