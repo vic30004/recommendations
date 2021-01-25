@@ -10,6 +10,7 @@ const RecomendationContentItems = ({
   category,
   description,
   follow,
+  followRecommendation,
   recommendation_id,
 }) => {
   const { data, loading, error } = useQuery(GET_USER, {
@@ -35,7 +36,13 @@ const RecomendationContentItems = ({
                 <i class='fas fa-user'></i> {data.user.username}
               </h5>
               <h5>{category}</h5>
-              <h5>Follows: {follow}</h5>
+              <h5
+                onClick={() =>
+                  followRecommendation({ variables: { recommendation_id } })
+                }
+              >
+                Follows: {follow}
+              </h5>
             </ContentContainer>
             <p>
               {" "}

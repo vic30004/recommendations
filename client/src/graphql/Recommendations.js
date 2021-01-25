@@ -71,3 +71,11 @@ export const ADD_ITEMS = gql`
     }
   }
 `;
+
+export const FOLLOW = gql`
+  mutation($recommendation_id: ID!) {
+    makeFollwo(recommendation_id: $recommendation_id) {
+      title
+    }
+  }
+`;
