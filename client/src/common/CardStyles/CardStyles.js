@@ -91,7 +91,7 @@ export const TitleContainer = styled(Row)`
     display: none;
     top: 76%;
     right: -15%;
-    z-index: 10;
+    z-index: 100;
     background: var(--primary-color);
     color: var(--light-primary-color);
     border-radius: 10px;

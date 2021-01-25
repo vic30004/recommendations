@@ -10,6 +10,7 @@ import {
   GET_RECOMMENDATION_BY_ID,
   GET_ITEMS,
   DELETE_ITEMS,
+  EDIT_ITEM,
 } from "../../graphql";
 import Modal from "../../common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
@@ -46,6 +47,17 @@ const Items = (props) => {
       console.log(error);
     }
   }
+
+  const [editItem, { loading: editLoading, error: editError }] = useMutation(
+    EDIT_ITEM,
+    {
+      refetchQueries: [{ query: GET_ITEMS, variables: { recommendation_id } }],
+
+      onError(err) {
+        console.log(err);
+      },
+    }
+  );
 
   const [
     deleteItem,
@@ -96,6 +108,8 @@ const Items = (props) => {
       {!contentLoading ? (
         <Content
           deleteItem={deleteItem}
+          editItem={editItem}
+          editLoading={editLoading}
           data={contentData}
           loading={contentLoading}
           error={contentError}

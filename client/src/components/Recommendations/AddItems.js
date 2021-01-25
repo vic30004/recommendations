@@ -5,15 +5,15 @@ const AddItems = ({
   toggle,
   title,
   handleChange,
-  category,
   description,
   main_picture,
   handleSubmit,
   openWidget,
   mutationLoading,
   setFormData,
-  itemData
+  itemData,
 }) => {
+  console.log({ description });
   return (
     <AddWrapper>
       <div className='top-container'>
@@ -46,7 +46,7 @@ const AddItems = ({
           name={"itemsCoverPicture"}
           size={"70%"}
           backg={main_picture ? "rgba(146, 204, 194, 1)" : ""}
-          onClick={(e) => openWidget(e, setFormData, 'items', itemData)}
+          onClick={(e) => openWidget(e, setFormData, "items", itemData)}
         >
           {main_picture ? "Upload Complete" : "Upload Photo"}
         </Button>

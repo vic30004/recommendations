@@ -10,7 +10,6 @@ module.exports = {
       try {
         const query = db("items").where({ recommendation_id });
         return query;
-
       } catch (error) {
         throw error;
       }
