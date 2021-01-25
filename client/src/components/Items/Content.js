@@ -24,6 +24,7 @@ const Content = ({ loading, data, error,deleteItem }) => {
               id={item.id}
               title={item.title}
               picture={item.cover_picture}
+              description={item.description}
               userId={item.user_id}
               user={user}
               recommendation_id={item.recommendation_id}

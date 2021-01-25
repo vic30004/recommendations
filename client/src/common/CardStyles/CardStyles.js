@@ -7,17 +7,58 @@ export const Card = styled.div`
   border-radius: 10px;
   display: flex;
   flex-flow: column;
+  position: relative;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--primary-color);
+  color: var(--light-primary-color);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
     0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
     0 16px 16px rgba(0, 0, 0, 0.12);
   transition: all 0.2s ease-in-out;
+
+  .picture-container {
+    height: 291px;
+    position: relative;
+    width: 100%;
+    display: flex;
+  }
   img {
     width: 100%;
     height: 291px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    transition: all 0.8s ease-in-out;
+    z-index: 2;
+  }
+
+  .description {
+    padding: 0 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.8s ease-in;
+    overflow: auto;
+    height: 155px;
+    opacity: 0;
+    z-index: 1;
+    font-size: 1.2rem;
+    background: var(--primary-color);
+  }
+  &:hover {
+    /* width: 273.913px; */
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      justify-self: flex-start;
+    }
+    .description {
+      display: block;
+      transform: translateY(70%);
+      opacity: 1;
+    }
   }
 
   &:hover {
