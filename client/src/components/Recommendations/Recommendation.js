@@ -4,24 +4,16 @@ import {
   RecommendationCard,
 } from "../../styles/Recommendations";
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_RECOMMENDATIONS, FOLLOW } from "../../graphql/";
+import { GET_RECOMMENDATIONS, FOLLOW, SHOWFOLLOWERS } from "../../graphql/";
 import { Image, Placeholder } from "cloudinary-react";
 import RecommendationContainerItems from "./RecomendationContentItems";
 import UserContext from "../../context/User/UserContext";
 export const Recommendation = () => {
   const { data, loading, error, fetchMore } = useQuery(GET_RECOMMENDATIONS);
 
-  const [
-    followRecommendation,
-    { loading: muationLoading, error: mutationError },
-  ] = useMutation(FOLLOW, {
-    refetchQueries: [{ query: GET_RECOMMENDATIONS }],
-    onError(err) {
-      console.log(err);
-    },
-  });
+
   const userContext = useContext(UserContext);
-  const { loadUser } = userContext;
+  const { loadUser, user } = userContext;
 
   return (
     <>
@@ -53,8 +45,8 @@ export const Recommendation = () => {
                 category={item.category}
                 description={item.description}
                 follow={item.follow}
-                followRecommendation={followRecommendation}
                 recommendation_id={item.id}
+                user={user}
               />
             </RecommendationCard>
           ))}

@@ -23,6 +23,12 @@ export const ContentContainer = styled.div`
   width: 40%;
   align-items: center;
   margin: 0 auto;
+  h5 {
+    i {
+      cursor: pointer;
+      margin-left: 0.4rem;
+    }
+  }
   @media only screen and (max-width: 1200px) {
     width: 70%;
   }

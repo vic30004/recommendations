@@ -79,3 +79,11 @@ export const FOLLOW = gql`
     }
   }
 `;
+
+export const SHOWFOLLOWERS = gql`
+  query($recommendation_id: ID!) {
+    showFollowesForRecommendation(recommendation_id: $recommendation_id) {
+      user_id
+    }
+  }
+`;
