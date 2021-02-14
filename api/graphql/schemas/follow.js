@@ -1,4 +1,4 @@
-exports.Follows =`
+exports.Follows = `
 type Follow{
     id: ID
     user_id: ID
@@ -6,17 +6,19 @@ type Follow{
     title:String
     description:String
     category:String
+    main_picture:String
+    owner: ID
 
 }
-`
-
+`;
 
 exports.FollowsQueries = `
 myFollows: [Follow]
 showFollowesForRecommendation(recommendation_id:ID!):[Follow]
+getFollowsByUserId(user_id: ID!):[Follow]
     
-`
+`;
 
-exports.FollowMutation= `
+exports.FollowMutation = `
 makeFollwo(recommendation_id:ID!):[Follow]
-`
+`;

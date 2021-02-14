@@ -3,7 +3,7 @@ import { InputContainer, Input, TextArea } from "./Form";
 
 export const InputBuilder = ({
   title,
-  type,
+  inputType,
   placeholder,
   name,
   value,
@@ -11,6 +11,7 @@ export const InputBuilder = ({
   marg,
   red,
   textArea,
+  required,
 }) => {
   const [empty, setEmpty] = useState(true);
 
@@ -23,15 +24,16 @@ export const InputBuilder = ({
   }, [value]);
   const genInputType = (type) => {
     console.log(type);
-    if (!type) {
+    if (!type !== "textarea") {
       return (
         <Input
-          type={type}
+          type={inputType}
           name={name}
           value={value}
           onChange={(e) => setFormData(e)}
           marg={marg}
           red={red}
+          required={required}
         />
       );
     }
@@ -44,6 +46,7 @@ export const InputBuilder = ({
         marg={marg}
         rows='5'
         red={red}
+        required={required}
         Area
       />
     );

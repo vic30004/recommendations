@@ -48,28 +48,31 @@ const SignUp = ({ setError, setMessage }) => {
     <Form onSubmit={(e) => handleSubmit(e)}>
       <InputBuilder
         title='username'
-        type='text'
+        inputType={"text"}
         placeholder='Username'
         name='username'
         value={username}
         setFormData={setFormData}
+        required={true}
         marg={"1rem"}
       />
       <InputBuilder
         title='email'
-        type='text'
+        inputType={"email"}
         placeholder='Email'
         name='email'
         value={email}
+        required={true}
         setFormData={setFormData}
         marg={"0.75rem"}
       />
       <InputBuilder
         title='password'
-        type='password'
+        inputType={"password"}
         placeholder='Password'
         name='password'
         value={password}
+        required={true}
         setFormData={setFormData}
         marg={"0.75rem"}
       />

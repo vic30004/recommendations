@@ -32,7 +32,6 @@ const SignIn = ({ setMessage, setError }) => {
     const user = await loginUser();
 
     if (!mutationError) {
- 
       let token = user.data.loginUser.token;
       localStorage["token"] = token;
       setMessage("Logged in!");
@@ -52,7 +51,7 @@ const SignIn = ({ setMessage, setError }) => {
       />
       <InputBuilder
         title='password'
-        type='password'
+        inputType={"password"}
         placeholder='Password'
         name='password'
         value={password}

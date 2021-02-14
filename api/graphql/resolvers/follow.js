@@ -25,6 +25,28 @@ module.exports = {
     return new Error("Please sign in to view your follows");
   },
 
+  getFollowsByUserId: async ({ user_id }, context) => {
+    const { token } = await context();
+
+    if (token) {
+      try {
+        const data = await db("recommendation")
+          .join("follow", "recommendation.id", "=", "follow.recommendation_id")
+          .select("title", "follow.id", "follow.user_id", "follow.recommendation_id","recommendation.description","recommendation.category", "recommendation.main_picture","recommendation.user_id as owner")
+          .where({ "follow.user_id": user_id });
+        if (data.length > 0) {
+          console.log(data)
+          return data;
+        }
+
+        return new Error("Following nothing at the moment");
+      } catch (error) {
+        throw error;
+      }
+    }
+    return new Error("Please sign in");
+  },
+
   makeFollwo: async ({ recommendation_id }, context) => {
     const { token } = await context();
 
@@ -75,7 +97,9 @@ module.exports = {
 
   showFollowesForRecommendation: async ({ recommendation_id }, context) => {
     try {
-      const check = await db("recommendation").where({ "recommendation.id":recommendation_id });
+      const check = await db("recommendation").where({
+        "recommendation.id": recommendation_id,
+      });
       if (check.length > 0) {
         const query = await db("follow")
           .join(
@@ -84,12 +108,13 @@ module.exports = {
             "=",
             "recommendation.id"
           )
-          .select("title","follow.id",'follow.user_id').where({"recommendation.id":recommendation_id})
-          return query
+          .select("title", "follow.id", "follow.user_id")
+          .where({ "recommendation.id": recommendation_id });
+        return query;
       }
       return new Error("Recommendation not found");
     } catch (error) {
-        throw error
+      throw error;
     }
   },
 };

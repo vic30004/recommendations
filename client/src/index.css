@@ -17,12 +17,4 @@ body {
   height: 100%;
   box-sizing: border-box;
   background: rgb(75, 85, 190);
-  background: linear-gradient(
-      135deg,
-      rgba(221, 114, 145, 1) 1%,
-      rgba(75, 85, 190, 1) 60%
-        /* rgba(239, 211, 164, 1) 66%,
-      rgba(146, 204, 194, 1) 70%  */
-    )
-    no-repeat;
 }

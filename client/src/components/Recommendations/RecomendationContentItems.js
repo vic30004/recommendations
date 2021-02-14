@@ -49,7 +49,6 @@ const RecomendationContentItems = ({
 
   const filterFollowers = (arr) => {
     const userId = user.loadUser[0].id;
-    console.log({ arr });
     if (!arr) {
       return setFollowing(false);
     }
@@ -74,7 +73,6 @@ const RecomendationContentItems = ({
 
   useEffect(() => {
     if (!followersLoading && followers) {
-      console.log({ followers });
       filterFollowers(followers);
     }
   }, [followers, muationLoading]);
