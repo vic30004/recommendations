@@ -87,3 +87,17 @@ export const SHOWFOLLOWERS = gql`
     }
   }
 `;
+
+export const GET_FOLLOWS_BY_USER_ID = gql`
+  query($user_id: ID!) {
+    getFollowsByUserId(user_id: $user_id) {
+      id
+      recommendation_id
+      title
+      description
+      category
+      main_picture
+      owner
+    }
+  }
+`;

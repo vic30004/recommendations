@@ -19,6 +19,7 @@ exports.UserQueries = `
     user(id:Int!):User
     users:[User]
     loadUser: [User]
+    getUserByUsername(username:String!): [User]
 `;
 
 exports.UserMutations = `

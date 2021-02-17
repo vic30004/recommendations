@@ -32,10 +32,18 @@ module.exports = {
       try {
         const data = await db("recommendation")
           .join("follow", "recommendation.id", "=", "follow.recommendation_id")
-          .select("title", "follow.id", "follow.user_id", "follow.recommendation_id","recommendation.description","recommendation.category", "recommendation.main_picture","recommendation.user_id as owner")
+          .select(
+            "title",
+            "follow.id",
+            "follow.user_id",
+            "follow.recommendation_id",
+            "recommendation.description",
+            "recommendation.category",
+            "recommendation.main_picture",
+            "recommendation.user_id as owner"
+          )
           .where({ "follow.user_id": user_id });
         if (data.length > 0) {
-          console.log(data)
           return data;
         }
 

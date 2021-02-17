@@ -1,11 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Profile/Header";
 import ProfileBody from "../../components/Profile/ProfileBody";
-const Profile = () => {
+import { useQuery, useMutation } from "@apollo/client";
+import { GETUSERBYUSERNAME } from "../../graphql/Users";
+import {
+  GET_FOLLOWS_BY_USER_ID,
+  GET_RECOMMENDATION_BY_ID,
+} from "../../graphql";
+
+const Profile = (props) => {
+  const [username, setUsername] = useState(props.match.params.username || "");
+  // Get user by Username
+  const { data:userData, loadin:userLoading, error:userError } = useQuery(GETUSERBYUSERNAME, {
+    variables: { username },
+  });
+
+  // Query to get recommendations
+  // const {
+  //   recommendationData,
+  //   recommendationLoading,
+  //   recommendationError,
+  // } = useQuery(GET_RECOMMENDATION_BY_ID, {
+  //   variables: { id: userData[0].id },
+  // });
+  // // Query to get follows
+  // const { followData, followLoading, followError } = useQuery(
+  //   GET_FOLLOWS_BY_USER_ID,
+  //   {
+  //     variables: { id: userData[0].id },
+  //   }
+  // );
   return (
     <div>
-      <Header />
-      <ProfileBody />
+      {userError ? (
+        <h1>No user was found</h1>
+      ) : (
+        <>
+          {!userLoading ? (
+            <>
+              <Header user={userData.getUserByUsername} />
+              <ProfileBody />{" "}
+            </>
+          ) : (
+            "Loading"
+          )}
+        </>
+      )}
     </div>
   );
 };

@@ -34,3 +34,12 @@ export const LOADUSER = gql`
     }
   }
 `;
+
+export const GETUSERBYUSERNAME = gql`
+  query($username: String!) {
+    getUserByUsername(username: $username) {
+      id
+      username
+    }
+  }
+`;
