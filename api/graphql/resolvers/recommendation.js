@@ -33,15 +33,16 @@ module.exports = {
 
     return new Error("Please sign in");
   },
-  getRecommendationsByUsername: async ({ username }, context) => {
+  getRecommendationsByUsername: async ({ user_id }, context) => {
     const { token } = await context();
     if (token) {
       try {
-        const data = await db("recommendation").where({ username });
+        const data = await db("recommendation").where({ user_id });
         if (data.length > 0) {
           return data;
         }
 
+        
         return new Error("Recommendation Not Found");
       } catch (error) {
         console.log(error);

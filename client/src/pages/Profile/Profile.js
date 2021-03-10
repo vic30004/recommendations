@@ -11,32 +11,22 @@ import {
 const Profile = (props) => {
   const [username, setUsername] = useState(props.match.params.username || "");
   // Get user by Username
-  const { data:userData, loadin:userLoading, error:userError } = useQuery(GETUSERBYUSERNAME, {
-    variables: { username },
-  });
+  const { data: userData, loadin: userLoading, error: userError } = useQuery(
+    GETUSERBYUSERNAME,
+    {
+      variables: { username },
+    }
+  );
 
   // Query to get recommendations
-  // const {
-  //   recommendationData,
-  //   recommendationLoading,
-  //   recommendationError,
-  // } = useQuery(GET_RECOMMENDATION_BY_ID, {
-  //   variables: { id: userData[0].id },
-  // });
-  // // Query to get follows
-  // const { followData, followLoading, followError } = useQuery(
-  //   GET_FOLLOWS_BY_USER_ID,
-  //   {
-  //     variables: { id: userData[0].id },
-  //   }
-  // );
+ 
   return (
     <div>
       {userError ? (
         <h1>No user was found</h1>
       ) : (
         <>
-          {!userLoading ? (
+          {!userLoading && userData ? (
             <>
               <Header user={userData.getUserByUsername} />
               <ProfileBody />{" "}

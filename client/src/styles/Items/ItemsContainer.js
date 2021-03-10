@@ -38,7 +38,7 @@ export const HeaderContentContainer = styled.div`
 
 export const HeaderInfoContainer = styled.div`
   display: flex;
-  flex-flow: column;
+  flex-flow: ${(props) => (props.row ? "row" : "column")};
   align-items: center;
   position: absolute;
   top: 0;
@@ -70,3 +70,5 @@ export const HeaderInfoContainer = styled.div`
     text-align: center;
   }
 `;
+
+

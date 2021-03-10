@@ -26,7 +26,7 @@ exports.RecommendationQueries = `
 recommendations: [Recommendation]
 recommendationFilter(title:String, category:String,user_id:ID):[Recommendation]
 getRecommendationById(id:ID!):[Recommendation]
-getRecommendationsByUsername(username:String!): [Recommendation]
+getRecommendationsByUsername(user_id:String!): [Recommendation]
 `;
 
 exports.RecommendationMutation = `
