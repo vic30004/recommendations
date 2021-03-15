@@ -11,6 +11,7 @@ import {
   ItemHeaderContainer,
 } from "../../styles/Items/ItemsContainer";
 import { FlexRow } from "../../common/flex";
+import ProfileBody from "./ProfileBody";
 
 const Header = ({ user }) => {
   const {
@@ -41,6 +42,7 @@ const Header = ({ user }) => {
   };
 
   return (
+    <>
     <ItemHeaderContainer>
       <HeaderContentContainer>
         {recommendationData ? (
@@ -51,7 +53,9 @@ const Header = ({ user }) => {
                 randomNumGen(
                   recommendationData.getRecommendationsByUsername.length
                 )
-              ].main_picture
+              ].main_picture || 'recommendation/dbnrnrpv0paeg7unzgjh'
+
+
             }
             width='auto'
             crop='fill'
@@ -67,7 +71,23 @@ const Header = ({ user }) => {
             <Placeholder type='pixelate' />
           </Image>
         ) : (
-          ""
+          <Image
+            cloud_name='dawyijhjw'
+            publicId=
+               'recommendation/dbnrnrpv0paeg7unzgjh'
+            width='auto'
+            crop='fill'
+            quality='auto'
+            responsive='true'
+            responsiveUseBreakpoints='true'
+            loading='lazy'
+            format='webp'
+            flag='prgressive'
+            effect='blur:120'
+            height='350'
+          >
+            <Placeholder type='pixelate' />
+          </Image>
         )}
         <HeaderInfoContainer>
           <h1>Welcome to {user[0].username} profile </h1>
@@ -83,7 +103,7 @@ const Header = ({ user }) => {
               <p>Recommendation:0 </p>
             )}
             {followData ? (
-              <p>{followData.getFollowsByUserId.length}</p>
+              <p>Following: {followData.getFollowsByUserId.length}</p>
             ) : (
               <p>Following: 0 </p>
             )}
@@ -91,6 +111,12 @@ const Header = ({ user }) => {
         </HeaderInfoContainer>
       </HeaderContentContainer>
     </ItemHeaderContainer>
+    <>
+    {recommendationData?  <ProfileBody recommendations={recommendationData.getRecommendationsByUsername}/> :<><h2>Recommendations</h2> <p>No Recommendations yet</p></>}
+    {followData?  <ProfileBody recommendations={followData.getFollowsByUserId} follow={true}/> :<><h2>Follows</h2> <p>Not Following Anything</p></>}
+  
+    </>
+    </>
   );
 };
 

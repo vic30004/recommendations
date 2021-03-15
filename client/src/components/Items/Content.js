@@ -23,7 +23,7 @@ const Content = ({
       {!loading && data
         ? data.showItems.map((item, i) => (
             <Cards
-              key={i}
+              key={item.id}
               id={item.id}
               title={item.title}
               picture={item.cover_picture}

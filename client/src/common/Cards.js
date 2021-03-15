@@ -52,7 +52,6 @@ const Cards = ({
     toggle();
   };
 
-  console.log({ itemsTitle });
   return (
     <Fragment>
       <Card>
@@ -63,7 +62,7 @@ const Cards = ({
             width='301'
             crop='scale'
             quality='auto'
-            responsive='true'
+            responsive
             loading='lazy'
             format='webp'
             responsiveUseBreakpoints='true'

@@ -29,7 +29,6 @@ const Profile = (props) => {
           {!userLoading && userData ? (
             <>
               <Header user={userData.getUserByUsername} />
-              <ProfileBody />{" "}
             </>
           ) : (
             "Loading"
