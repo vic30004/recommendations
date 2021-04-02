@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col1, Col2, Col3, Col4, Row } from "../Base/Base";
+import { Col4, Row } from "../Base/Base";
 
 export const Card = styled.div`
   grid-auto-columns: auto;
@@ -84,6 +84,8 @@ export const TitleContainer = styled(Row)`
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
         0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
         0 16px 16px rgba(0, 0, 0, 0.12);
+      z-index: 100;
+      transform: translateY(-3px);
     }
   }
   .drop-down {
@@ -100,9 +102,11 @@ export const TitleContainer = styled(Row)`
     box-shadow: none;
     &:hover {
       display: block;
+      z-index: 100;
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
         0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
         0 16px 16px rgba(0, 0, 0, 0.12);
+      transform: translateY(-3px);
     }
     ul {
       text-align: left;

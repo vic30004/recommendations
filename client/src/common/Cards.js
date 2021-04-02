@@ -28,6 +28,8 @@ const Cards = ({
     itemsCoverPicture: picture,
   });
 
+  console.log(currentUser[0].id == userId);
+  console.log(currentUser[0].id, userId);
   useEffect(() => {
     setItem({
       itemsTitle: title,
@@ -77,7 +79,7 @@ const Cards = ({
         </div>
         <TitleContainer>
           <CardTitle Col={"92%"}>{title}</CardTitle>
-          {currentUser[0].id === userId ? (
+          {parseInt(currentUser[0].id) === parseInt(userId) ? (
             <>
               <span>
                 <i class='fas fa-ellipsis-v'></i>

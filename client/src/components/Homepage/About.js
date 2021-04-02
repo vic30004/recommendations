@@ -18,7 +18,7 @@ const About = () => {
           width='500'
           crop='limit'
           quality='auto'
-          responsive='true'
+          responsive
           loading='lazy'
           format='webp'
           flag='prgressive'

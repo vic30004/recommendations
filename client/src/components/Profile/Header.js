@@ -14,12 +14,13 @@ import { FlexRow } from "../../common/flex";
 import ProfileBody from "./ProfileBody";
 
 const Header = ({ user }) => {
+  const user_id = user[0].id;
   const {
     data: recommendationData,
     loading: recommendationLoading,
     error: recommendationError,
   } = useQuery(GET_RECOMMENDATION_BY_USER_ID, {
-    variables: { user_id: user[0].id },
+    variables: { user_id },
   });
   // Query to get follows
   const {
@@ -43,79 +44,94 @@ const Header = ({ user }) => {
 
   return (
     <>
-    <ItemHeaderContainer>
-      <HeaderContentContainer>
+      <ItemHeaderContainer>
+        <HeaderContentContainer>
+          {recommendationData ? (
+            <Image
+              cloud_name='dawyijhjw'
+              publicId={
+                recommendationData.getRecommendationsByUsername[
+                  randomNumGen(
+                    recommendationData.getRecommendationsByUsername.length
+                  )
+                ].main_picture || "recommendation/dbnrnrpv0paeg7unzgjh"
+              }
+              width='auto'
+              crop='fill'
+              quality='auto'
+              responsive
+              responsiveUseBreakpoints='true'
+              loading='lazy'
+              format='webp'
+              flag='prgressive'
+              effect='blur:120'
+              height='350'
+            >
+              <Placeholder type='pixelate' />
+            </Image>
+          ) : (
+            <Image
+              cloud_name='dawyijhjw'
+              publicId='recommendation/dbnrnrpv0paeg7unzgjh'
+              width='auto'
+              crop='fill'
+              quality='auto'
+              responsive
+              responsiveUseBreakpoints='true'
+              loading='lazy'
+              format='webp'
+              flag='prgressive'
+              effect='blur:120'
+              height='350'
+            >
+              <Placeholder type='pixelate' />
+            </Image>
+          )}
+          <HeaderInfoContainer>
+            <h1>Welcome to {user[0].username} profile </h1>
+            <FlexRow>
+              {recommendationData ? (
+                <p>
+                  {makePlural(
+                    recommendationData.getRecommendationsByUsername.length
+                  )}
+                  : {recommendationData.getRecommendationsByUsername.length}
+                </p>
+              ) : (
+                <p>Recommendation:0 </p>
+              )}
+              {followData ? (
+                <p>Following: {followData.getFollowsByUserId.length}</p>
+              ) : (
+                <p>Following: 0 </p>
+              )}
+            </FlexRow>
+          </HeaderInfoContainer>
+        </HeaderContentContainer>
+      </ItemHeaderContainer>
+      <>
         {recommendationData ? (
-          <Image
-            cloud_name='dawyijhjw'
-            publicId={
-              recommendationData.getRecommendationsByUsername[
-                randomNumGen(
-                  recommendationData.getRecommendationsByUsername.length
-                )
-              ].main_picture || 'recommendation/dbnrnrpv0paeg7unzgjh'
-
-
-            }
-            width='auto'
-            crop='fill'
-            quality='auto'
-            responsive='true'
-            responsiveUseBreakpoints='true'
-            loading='lazy'
-            format='webp'
-            flag='prgressive'
-            effect='blur:120'
-            height='350'
-          >
-            <Placeholder type='pixelate' />
-          </Image>
+          <ProfileBody
+            recommendations={recommendationData.getRecommendationsByUsername}
+            query={GET_RECOMMENDATION_BY_USER_ID}
+            user_id={user_id}
+          />
         ) : (
-          <Image
-            cloud_name='dawyijhjw'
-            publicId=
-               'recommendation/dbnrnrpv0paeg7unzgjh'
-            width='auto'
-            crop='fill'
-            quality='auto'
-            responsive='true'
-            responsiveUseBreakpoints='true'
-            loading='lazy'
-            format='webp'
-            flag='prgressive'
-            effect='blur:120'
-            height='350'
-          >
-            <Placeholder type='pixelate' />
-          </Image>
+          <>
+            <h2>Recommendations</h2> <p>No Recommendations yet</p>
+          </>
         )}
-        <HeaderInfoContainer>
-          <h1>Welcome to {user[0].username} profile </h1>
-          <FlexRow>
-            {recommendationData ? (
-              <p>
-                {makePlural(
-                  recommendationData.getRecommendationsByUsername.length
-                )}
-                : {recommendationData.getRecommendationsByUsername.length}
-              </p>
-            ) : (
-              <p>Recommendation:0 </p>
-            )}
-            {followData ? (
-              <p>Following: {followData.getFollowsByUserId.length}</p>
-            ) : (
-              <p>Following: 0 </p>
-            )}
-          </FlexRow>
-        </HeaderInfoContainer>
-      </HeaderContentContainer>
-    </ItemHeaderContainer>
-    <>
-    {recommendationData?  <ProfileBody recommendations={recommendationData.getRecommendationsByUsername}/> :<><h2>Recommendations</h2> <p>No Recommendations yet</p></>}
-    {followData?  <ProfileBody recommendations={followData.getFollowsByUserId} follow={true}/> :<><h2>Follows</h2> <p>Not Following Anything</p></>}
-  
-    </>
+        {followData ? (
+          <ProfileBody
+            recommendations={followData.getFollowsByUserId}
+            follow={true}
+          />
+        ) : (
+          <>
+            <h2>Follows</h2> <p>Not Following Anything</p>
+          </>
+        )}
+      </>
     </>
   );
 };

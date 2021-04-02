@@ -20,7 +20,7 @@ export const ContentSection = styled.section`
 export const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 46%;
   align-items: center;
   margin: 0 auto;
   h5 {

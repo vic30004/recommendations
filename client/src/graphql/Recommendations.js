@@ -98,6 +98,7 @@ export const GET_FOLLOWS_BY_USER_ID = gql`
       category
       main_picture
       owner
+      user_id
     }
   }
 `;
@@ -110,6 +111,23 @@ export const GET_RECOMMENDATION_BY_USER_ID = gql`
       description
       category
       main_picture
+      user_id
+     }
+  }
+`;
+
+export const DELETE_RECOMMENDATION = gql`
+  mutation($id: ID!) {
+    deleteRecommendation(id: $id) {
+      message
+    }
+  }
+`;
+
+export const EDIT_RECOMMENDATION = gql`
+  mutation($id: ID!) {
+    editRecommendation(id: $id) {
+      title
     }
   }
 `;

@@ -20,7 +20,7 @@ const Header = ({ data }) => {
             width='auto'
             crop='fill'
             quality='auto'
-            responsive='true'
+            responsive
             responsiveUseBreakpoints="true"
             loading='lazy'
             format='webp'

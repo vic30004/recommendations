@@ -23,7 +23,7 @@ const Profile = (props) => {
   return (
     <div>
       {userError ? (
-        <h1>No user was found</h1>
+        ''
       ) : (
         <>
           {!userLoading && userData ? (

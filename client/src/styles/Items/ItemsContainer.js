@@ -47,6 +47,7 @@ export const HeaderInfoContainer = styled.div`
   margin-top: 1rem;
   z-index: 2;
   color: ${lightPinkColor};
+
   h1 {
     font-size: 2.5rem;
   }
@@ -54,21 +55,28 @@ export const HeaderInfoContainer = styled.div`
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
-    width: 85%;
-    font-size: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.9rem;
     font-weight: bold;
-    padding: 0 5rem 0 0;
+    padding: 0 0px;
     li {
       list-style-type: none;
     }
   }
   p {
     margin-top: 2rem;
-    width: 682px;
+    width: 320px;
+    max-width: 100%;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
   }
+  @media only screen and (min-width: 600px) {
+    ul {
+      width: 85%;
+      font-size: 1.5rem;
+      padding: 0 5rem 0 0;
+    }
+  }
 `;
-
-

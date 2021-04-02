@@ -30,7 +30,7 @@ export const Recommendation = () => {
                   width='620'
                   crop='limit'
                   quality='auto'
-                  responsive='true'
+                  responsive
                   loading='lazy'
                   format='webp'
                   flag='prgressive'
