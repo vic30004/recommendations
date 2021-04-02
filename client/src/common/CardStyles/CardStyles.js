@@ -67,6 +67,10 @@ export const Card = styled.div`
       0 16px 16px rgba(0, 0, 0, 0.12);
     transform: translateY(-3px);
   }
+
+  @media only screen and (max-width: 600px) {
+    margin: 1rem;
+  }
 `;
 
 export const TitleContainer = styled(Row)`

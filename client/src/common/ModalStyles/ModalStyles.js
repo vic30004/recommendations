@@ -27,4 +27,5 @@ export const ModalButton = styled.div`
   border-radius: 50%;
   text-align: center;
   cursor: pointer;
+  z-index: 1000;
 `;

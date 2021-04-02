@@ -86,7 +86,8 @@ const RecomendationContentItems = ({
             <ContentContainer>
               <h5>
                 {" "}
-                <i class='fas fa-user'></i> {data.user.username}
+                <i class='fas fa-user'></i>{" "}
+                <Link to={`/${data.user.username}`}>{data.user.username}</Link>
               </h5>
               <h5>{category}</h5>
               <h5>
@@ -102,7 +103,7 @@ const RecomendationContentItems = ({
             </ContentContainer>
             <p>
               {" "}
-              <Link to={`/${data.user.username}/${recommendation_id}`}>
+              <Link to={`/${recommendation_id}/${data.user.username}`}>
                 {limitText(description, 20)}
               </Link>
             </p>

@@ -49,7 +49,8 @@ export const HeaderInfoContainer = styled.div`
   color: ${lightPinkColor};
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    text-align: center;
   }
   ul {
     display: flex;
@@ -73,6 +74,9 @@ export const HeaderInfoContainer = styled.div`
     text-align: center;
   }
   @media only screen and (min-width: 600px) {
+    h1 {
+      font-size: 2.5rem;
+    }
     ul {
       width: 85%;
       font-size: 1.5rem;

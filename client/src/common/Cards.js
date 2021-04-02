@@ -28,8 +28,7 @@ const Cards = ({
     itemsCoverPicture: picture,
   });
 
-  console.log(currentUser[0].id == userId);
-  console.log(currentUser[0].id, userId);
+  
   useEffect(() => {
     setItem({
       itemsTitle: title,
@@ -42,6 +41,7 @@ const Cards = ({
 
   const handleEdit = (event) => {
     event.preventDefault();
+    console.log({itemsTitle})
     editItem({
       variables: {
         id,

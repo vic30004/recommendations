@@ -112,7 +112,7 @@ export const GET_RECOMMENDATION_BY_USER_ID = gql`
       category
       main_picture
       user_id
-     }
+    }
   }
 `;
 
@@ -125,9 +125,10 @@ export const DELETE_RECOMMENDATION = gql`
 `;
 
 export const EDIT_RECOMMENDATION = gql`
-  mutation($id: ID!) {
-    editRecommendation(id: $id) {
+  mutation($id: ID!, $title: String, $description: String) {
+    editRecommendation(id: $id, title: $title, description: $description) {
       title
+      
     }
   }
 `;

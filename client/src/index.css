@@ -21,6 +21,8 @@ body {
 
 .swiper-container {
  padding:0 2rem!important;
+ height:50vh;
+ /* overflow: visible !important; */
 }
 
 /* @media screen and (min-width: 320px) {

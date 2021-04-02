@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext,Fragment } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useMutation } from "@apollo/client";
 
@@ -14,6 +14,7 @@ import UserContext from "../../context/User/UserContext";
 import "swiper/swiper-bundle.min.css";
 import Cards from "../../common/Cards";
 import { DELETE_RECOMMENDATION, EDIT_RECOMMENDATION } from "../../graphql";
+import { ItemContentContainer } from "../../styles/Items";
 SwiperCore.use([Navigation, Controller, Pagination, Scrollbar]);
 
 const ProfileBody = ({ recommendations, follow, query, user_id }) => {
@@ -44,34 +45,11 @@ const ProfileBody = ({ recommendations, follow, query, user_id }) => {
 
   const { user } = userContext;
   return (
-    <div>
+    <Fragment>
       <h2>{follow ? "Following" : "Recommendations"}</h2>
       {recommendations.length ? (
-        <Swiper
-          spaceBetween={10}
-          controller={{ control: controlledSwiper }}
-          slidesPerView={1}
-          navigation
-          breakpoints={{
-            540: {
-              width: 540,
-              slidesPerView: 2,
-            },
-            // when window width is >= 768px
-            768: {
-              width: 768,
-              slidesPerView: 4.2,
-            },
-            1200: {
-              width: 1200,
-              slidesPerView: 4.2,
-            },
-          }}
-          onSwiper={setControlledSwiper}
-        >
+        <ItemContentContainer>
           {recommendations.map((item) => (
-            <>
-              <SwiperSlide>
                 <Cards
                   key={item.title}
                   id={item.id}
@@ -85,16 +63,14 @@ const ProfileBody = ({ recommendations, follow, query, user_id }) => {
                   editItem={editItem}
                   editLoading={editLoading}
                 />
-              </SwiperSlide>
-            </>
           ))}
-        </Swiper>
+        </ItemContentContainer>
       ) : follow ? (
         "Not Following anything"
       ) : (
         "No Recommendations yet"
       )}
-    </div>
+    </Fragment>
   );
 };
 
