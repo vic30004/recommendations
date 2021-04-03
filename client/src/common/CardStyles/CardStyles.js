@@ -65,7 +65,7 @@ export const Card = styled.div`
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.12),
       0 8px 8px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
       0 16px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); */
   }
 
   @media only screen and (max-width: 600px) {

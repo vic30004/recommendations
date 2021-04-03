@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Logo } from "../../common/Logo";
 import { ControlsContainer } from "../../styles/Recommendations/Controls";
+import UserContext from "../../context/User/UserContext";
+import { Link } from "react-router-dom";
 
 export const Controls = () => {
+  const userContext = useContext(UserContext);
+  const { user } = userContext;
   return (
     <ControlsContainer>
       <div className='logo'>
@@ -12,10 +16,9 @@ export const Controls = () => {
         </Logo>
       </div>
       <ul>
-        <li>Profile</li>
-        <li>Contact</li>
-        <li className='grow'>
-          <input type='text' /> <i class='fas fa-search'></i>
+        <li>
+          {" "}
+          <Link to={`/${user.loadUser[0].username}`}>Profile</Link>
         </li>
       </ul>
     </ControlsContainer>

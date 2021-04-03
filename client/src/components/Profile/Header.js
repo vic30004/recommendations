@@ -10,8 +10,10 @@ import {
   HeaderInfoContainer,
   ItemHeaderContainer,
 } from "../../styles/Items/ItemsContainer";
-import { FlexRow } from "../../common/flex";
+import { FlexRow } from "../../common/Flex";
 import ProfileBody from "./ProfileBody";
+import { ItemContentContainer } from "../../styles/Items";
+import { FlexColumn } from "../../common";
 
 const Header = ({ user }) => {
   const user_id = user[0].id;
@@ -127,9 +129,11 @@ const Header = ({ user }) => {
             follow={true}
           />
         ) : (
-          <>
-            <h2>Follows</h2> <p>Not Following Anything</p>
-          </>
+          <ItemContentContainer>
+            <FlexColumn>
+              <h2>Follows</h2> <p>Not Following Anything</p>
+            </FlexColumn>
+          </ItemContentContainer>
         )}
       </>
     </>

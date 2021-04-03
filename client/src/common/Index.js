@@ -3,3 +3,4 @@ export * from "./Form";
 export * from "./InputBuilder";
 export * from "./Message";
 export * from "./Logo";
+export * from "./Flex";

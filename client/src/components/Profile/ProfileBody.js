@@ -1,4 +1,4 @@
-import { useState, useContext,Fragment } from "react";
+import { useState, useContext, Fragment } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useMutation } from "@apollo/client";
 
@@ -50,25 +50,29 @@ const ProfileBody = ({ recommendations, follow, query, user_id }) => {
       {recommendations.length ? (
         <ItemContentContainer>
           {recommendations.map((item) => (
-                <Cards
-                  key={item.title}
-                  id={item.id}
-                  title={item.title}
-                  picture={item.main_picture}
-                  description={item.description}
-                  userId={item.user_id}
-                  recommendation_id={item.recommendation_id || item.id}
-                  user={user}
-                  deleteItem={deleteItem}
-                  editItem={editItem}
-                  editLoading={editLoading}
-                />
+            <Cards
+              key={item.title}
+              id={item.id}
+              title={item.title}
+              picture={item.main_picture}
+              description={item.description}
+              userId={item.user_id}
+              recommendation_id={item.recommendation_id || item.id}
+              user={user}
+              deleteItem={deleteItem}
+              editItem={editItem}
+              editLoading={editLoading}
+            />
           ))}
         </ItemContentContainer>
       ) : follow ? (
-        "Not Following anything"
+        <ItemContentContainer>
+          <h3>Not Following anything</h3>
+        </ItemContentContainer>
       ) : (
-        "No Recommendations yet"
+        <ItemContentContainer>
+          <h3>No Recommendations Yet</h3>
+        </ItemContentContainer>
       )}
     </Fragment>
   );

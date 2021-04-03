@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const ItemContentContainer = styled.div`
-  padding: 2rem 0%;
-  margin: 0 auto;
+  padding: 0rem 0%;
+  margin: 2rem auto;
   max-width: 100%;
+  width: 95%;
   min-width: 300px;
   display: grid;
+  /* margin-bottom: 2rem; */
   grid-template-columns: repeat(1, 1fr);
   @media only screen and (min-width: 600px) {
     grid-gap: 2%;
