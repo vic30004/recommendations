@@ -15,7 +15,7 @@ export const MainContainer = styled.section`
   justify-content: space-between;
   padding: 2rem;
   margin-top: 2rem;
-  height:100%;
+  height: 100%;
 
   @media only screen and (max-width: 1140px) {
     justify-content: center;
@@ -24,8 +24,9 @@ export const MainContainer = styled.section`
 `;
 
 export const RecommendationCard = styled.div`
-  background: #fff;
+  background: var(--third-color);
   width: 100%;
+  color: var(--primary-100);
   border-radius: 10px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
     0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
@@ -36,6 +37,14 @@ export const RecommendationCard = styled.div`
   margin-bottom: 2rem;
   max-width: 100%;
   min-width: 200px;
+  h1 {
+    color: #333;
+    text-transform: capitalize;
+    font-family: var(--header-font);
+  }
+  a {
+    color: var(--primary-100);
+  }
   @media only screen and (max-width: 440px) {
     width: 300px;
   }

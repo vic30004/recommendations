@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const AddSectionContainer = styled.aside`
-  background: #fff;
+  background:var(--primary-100);
   height: 70px;
+  color: var(--secondary-color);
   display: flex;
   justify-content: center;
   padding: 0.75rem 1rem;
@@ -12,11 +13,12 @@ export const AddSectionContainer = styled.aside`
   cursor: pointer;
   top: 20px;
   left: 20px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
-    0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09),
+    0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09),
+    0 32px 16px rgba(0, 0, 0, 0.09);
 
   font-family: var(--header-font);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
 
   #small {

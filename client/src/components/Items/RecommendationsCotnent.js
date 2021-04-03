@@ -13,7 +13,7 @@ const RecommendationsCotnent = ({ id, category, follow }) => {
     <>
       <li>Category: {category}</li>
       <li>Author: {data ? data.user.username : ""}</li>
-      <li>Follows: {follow}</li>
+      <li>Follows: {follow < 0 ? 0 : follow}</li>
     </>
   );
 };

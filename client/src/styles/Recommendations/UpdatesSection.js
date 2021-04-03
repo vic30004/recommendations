@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const UpdatesContainer = styled.div`
-  background: #fff;
+  background: var(--primary-100);
   border-radius: 10px;
   width: 260px;
   padding: 1rem 2rem;

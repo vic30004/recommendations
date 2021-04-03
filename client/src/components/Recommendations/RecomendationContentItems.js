@@ -97,7 +97,7 @@ const RecomendationContentItems = ({
                     followRecommendation({ variables: { recommendation_id } })
                   }
                   class='fas fa-heart'
-                  style={following ? { color: "red" } : { color: "black" }}
+                  style={following ? { color: "red" } : { color: "grey" }}
                 ></i>
               </h5>
             </ContentContainer>
