@@ -14,7 +14,7 @@ import {
 } from "../../graphql";
 import Modal from "../components/common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
-import ModalTrigger from "../common/ModalTrigger";
+import ModalTrigger from "../components/common/ModalTrigger";
 import { openWidget } from "../../utils/CloudinaryWidget";
 const Items = (props) => {
   const [id, setId] = useState(props.match.params.recommendationId || "");
