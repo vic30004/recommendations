@@ -1,5 +1,4 @@
 import React from "react";
-import { AddSectionContainer } from "../styles/Recommendations";
 import { ModalButton } from "./ModalStyles/ModalStyles";
 
 const ModalTrigger = ({ toggle }) => {
