@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+script: 
+  - docker build -t vic30004/multi-client ./client 
+  - docker build -t vic30004/multi-nginx ./nginx 
+  - docker build -t vic30004/multi-server ./server 
+  
