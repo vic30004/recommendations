@@ -1,4 +1,4 @@
-import { GET_USER } from "../graphql";
+import { GET_USER } from "../../graphql";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 

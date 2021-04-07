@@ -5,7 +5,7 @@ import { Card, CardTitle, TitleContainer } from "./CardStyles/CardStyles";
 import Modal from "./Modal";
 import useToggle from "../hooks/useToggle";
 import useForm from "../hooks/UseForm";
-import AddItems from "../components/Recommendations/AddItems";
+import AddItems from "../Recommendations/AddItems";
 import { openWidget } from "../utils/CloudinaryWidget";
 
 const Cards = ({

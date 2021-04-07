@@ -1,5 +1,5 @@
 import React from "react";
-import { UpdatesContainer } from "../styles/Recommendations";
+import { UpdatesContainer } from "../../styles/Recommendations";
 import { DataContainer } from "./ContainerStyles/ContainerStyles";
 import {UpdateContainerItems} from './UpdateContainerItems'
 
