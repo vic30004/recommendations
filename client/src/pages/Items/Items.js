@@ -15,7 +15,7 @@ import {
 import Modal from "../../components/common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
 import ModalTrigger from "../../components/common/ModalTrigger";
-import { openWidget } from "../../utils/CloudinaryWidget";
+import { openWidget } from "../../components/utils/CloudinaryWidget";
 const Items = (props) => {
   const [id, setId] = useState(props.match.params.recommendationId || "");
   const [recommendation_id, setRecommendation_id] = useState(
