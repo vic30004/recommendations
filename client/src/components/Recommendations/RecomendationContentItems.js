@@ -8,7 +8,7 @@ import {
 import { useQuery, useMutation } from "@apollo/client";
 import { ContentContainer, ContentSection } from "../../styles/Recommendations";
 import { Link } from "react-router-dom";
-import useToggle from "../../hooks/useToggle";
+import useToggle from "../hooks/useToggle";
 
 const RecomendationContentItems = ({
   title,

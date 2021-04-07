@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Content from "../../components/Items/Content";
 import Header from "../../components/Items/Header";
-import useToggle from "../../hooks/useToggle";
-import useForm from "../../hooks/UseForm";
+import useToggle from "../../components/hooks/useToggle";
+import useForm from "../../components/hooks/UseForm";
 import { ItemsContainer } from "../../styles/Items";
 import { useQuery, useMutation } from "@apollo/client";
 import {

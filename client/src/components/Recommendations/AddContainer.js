@@ -1,6 +1,6 @@
 import React from "react";
-import useToggle from "../../hooks/useToggle";
-import useFrom from "../../hooks/UseForm";
+import useToggle from "../hooks/useToggle";
+import useFrom from "../hooks/UseForm";
 import { useMutation } from "@apollo/client";
 import {
   ADD_RECOMMENDATION,

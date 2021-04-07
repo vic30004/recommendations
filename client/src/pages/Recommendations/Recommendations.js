@@ -7,7 +7,7 @@ import {
   UpdatesSections,
 } from "../../components/Recommendations/";
 import AddContainer from "../../components/Recommendations/AddContainer";
-import useToggle from "../../hooks/useToggle";
+import useToggle from "../../components/hooks/useToggle";
 import { MainContainer } from "../../styles/Recommendations/Recommendations";
 
 const Recommendations = (props) => {
