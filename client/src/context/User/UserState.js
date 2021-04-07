@@ -1,9 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 import UserContext from "./UserContext";
-import { LOGIN, REGISTER_USER } from "../types";
+import { LOGIN } from "../types";
 import { LOADUSER } from "../../graphql/Users";
-import { gql, useQuery, useMutation } from "@apollo/client";
-import useForm from "../../hooks/UseForm";
+import { useQuery } from "@apollo/client";
 import UserReducer from "./UserReducer";
 
 const UserState = (props) => {
