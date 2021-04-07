@@ -12,7 +12,7 @@ import {
   DELETE_ITEMS,
   EDIT_ITEM,
 } from "../../graphql";
-import Modal from "../components/common/Modal.js";
+import Modal from "../../components/common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
 import ModalTrigger from "../components/common/ModalTrigger";
 import { openWidget } from "../../utils/CloudinaryWidget";
