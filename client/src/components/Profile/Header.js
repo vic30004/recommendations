@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import {
   GET_FOLLOWS_BY_USER_ID,
   GET_RECOMMENDATION_BY_USER_ID,
@@ -10,10 +10,9 @@ import {
   HeaderInfoContainer,
   ItemHeaderContainer,
 } from "../../styles/Items/ItemsContainer";
-import { FlexRow } from "../../common";
+import { FlexRow,FlexColumn } from "../common";
 import ProfileBody from "./ProfileBody";
 import { ItemContentContainer } from "../../styles/Items";
-import { FlexColumn } from "../../common";
 
 const Header = ({ user }) => {
   const user_id = user[0].id;

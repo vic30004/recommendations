@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Logo } from "../../common";
+import { Logo } from "../common";
 import { ControlsContainer } from "../../styles/Recommendations/Controls";
 import UserContext from "../../context/User/UserContext";
 import { Link } from "react-router-dom";

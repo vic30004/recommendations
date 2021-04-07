@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../../context/User/UserContext";
 import { ItemContentContainer } from "../../styles/Items";
-import Cards from "../../common/Cards";
+import Cards from "../common/Cards";
 const Content = ({
   loading,
   data,

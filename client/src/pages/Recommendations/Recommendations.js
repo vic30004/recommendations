@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import Modal from "../../common/Modal.js";
+import Modal from "../components/common/Modal.js";
 import {
   Controls,
   AddSection,

@@ -1,7 +1,7 @@
 import React from "react";
 import { GET_RECOMMENDATIONS } from "../../graphql/";
-import { UpdateContainerBuilder } from "../../common/UpdateContainerBuilder";
-import { UpdatesContainer } from "../../styles/Recommendations";
+import { UpdateContainerBuilder } from "../common/UpdateContainerBuilder";
+
 import { useQuery } from "@apollo/client";
 
 export const UpdatesSections = () => {

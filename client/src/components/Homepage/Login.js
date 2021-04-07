@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Message } from "../../common";
+import { Button, Message } from "../common";
 import useToggle from "../../hooks/useToggle";
 import { LoginContainer, Nav, FormContainer } from "../../styles/Homepage";
 import SignIn from "../Register/SignIn";

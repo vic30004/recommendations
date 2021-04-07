@@ -1,6 +1,5 @@
 import React, { useContext, useReducer } from "react";
-import { Form } from "../../common";
-import { InputBuilder, Button } from "../../common";
+import { InputBuilder, Button,Form } from "../common";
 import useForm from "../../hooks/UseForm";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { ADD_USER, LOGIN_USER } from "../../graphql";

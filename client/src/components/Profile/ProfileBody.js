@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import UserContext from "../../context/User/UserContext";
 
 // Import Swiper styles
-import Cards from "../../common/Cards";
+import Cards from "../common/Cards";
 import { DELETE_RECOMMENDATION, EDIT_RECOMMENDATION } from "../../graphql";
 import { ItemContentContainer } from "../../styles/Items";
 

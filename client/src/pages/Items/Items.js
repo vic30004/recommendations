@@ -12,9 +12,9 @@ import {
   DELETE_ITEMS,
   EDIT_ITEM,
 } from "../../graphql";
-import Modal from "../../common/Modal.js";
+import Modal from "../components/common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
-import ModalTrigger from "../../common/ModalTrigger";
+import ModalTrigger from "../common/ModalTrigger";
 import { openWidget } from "../../utils/CloudinaryWidget";
 const Items = (props) => {
   const [id, setId] = useState(props.match.params.recommendationId || "");

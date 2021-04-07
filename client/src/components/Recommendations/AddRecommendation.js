@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import { AddWrapper } from "../../styles/Recommendations";
-import { Button, Form, InputBuilder } from "../../common";
+import { Button, Form, InputBuilder } from "../common";
 
 const AddRecommendation = ({toggle,toggleItems,title,handleChange,category,description,main_picture,setFormData, openWidget,mutationLoading}) => {
     return (
