@@ -1,21 +1,13 @@
 import { useState, useContext, Fragment } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useMutation } from "@apollo/client";
 
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  Controller,
-} from "swiper";
+
 import UserContext from "../../context/User/UserContext";
 
 // Import Swiper styles
-import "swiper/swiper-bundle.min.css";
 import Cards from "../../common/Cards";
 import { DELETE_RECOMMENDATION, EDIT_RECOMMENDATION } from "../../graphql";
 import { ItemContentContainer } from "../../styles/Items";
-SwiperCore.use([Navigation, Controller, Pagination, Scrollbar]);
 
 const ProfileBody = ({ recommendations, follow, query, user_id }) => {
   const [controlledSwiper, setControlledSwiper] = useState(null);
