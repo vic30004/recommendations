@@ -7,7 +7,7 @@ script:
   - docker build -t vic30004/multi-nginx ./nginx 
   - docker build -t vic30004/multi-api ./api 
   # Login to docker CLI
-  -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
   - docker push vic30004/multi-client
   - docker push vic30004/multi-nginx
