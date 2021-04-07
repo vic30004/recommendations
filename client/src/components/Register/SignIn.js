@@ -31,7 +31,7 @@ const SignIn = ({ setMessage, setError }) => {
     e.preventDefault();
     const user = await loginUser();
 
-    if (!mutationError) {
+    if (user) {
       let token = user.data.loginUser.token;
       localStorage["token"] = token;
       setMessage("Logged in!");

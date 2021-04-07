@@ -41,13 +41,13 @@ export const InputContainer = styled.div`
   margin: 0 auto;
   .empty {
     transform: ${(props) =>
-      props.Area ? "translateY(-350%)" : "translateY(-230%)"};
+      props.Area ? "translateY(-250%)" : "translateY(-230%)"};
     ${spanSetUp};
   }
   .full {
     ${spanSetUp}
     transform: ${(props) =>
-      props.Area ? "translateY(-520%)" : "translateY(-450%)"};
+      props.Area ? "translateY(-450%)" : "translateY(-450%)"};
   }
 
   input:focus + span {
