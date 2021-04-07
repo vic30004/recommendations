@@ -10,7 +10,7 @@ import {
   HeaderInfoContainer,
   ItemHeaderContainer,
 } from "../../styles/Items/ItemsContainer";
-import { FlexRow } from "../../common/Flex";
+import { FlexRow } from "../../common";
 import ProfileBody from "./ProfileBody";
 import { ItemContentContainer } from "../../styles/Items";
 import { FlexColumn } from "../../common";
