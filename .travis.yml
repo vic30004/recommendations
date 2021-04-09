@@ -14,16 +14,16 @@ script:
   - docker push vic30004/multi-api
 
 
-  deploy:
-    provider: elasticbeanstalk
-    region: 'us-east-1'
-    app: 'recommendation'
-    env: 'Recommendation-env'
-    bucket_name: 'elasticbeanstalk-us-east-1-659394969678'
-    bucket_path: 'docker-recommendation'
-    on:
-      branch: main
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'recommendation'
+  env: 'Recommendation-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-659394969678'
+  bucket_path: 'docker-recommendation'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
 
 
