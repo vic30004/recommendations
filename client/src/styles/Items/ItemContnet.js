@@ -7,11 +7,13 @@ export const ItemContentContainer = styled.div`
   width: 95%;
   min-width: 300px;
   display: grid;
+  padding-bottom: 5%;
   /* margin-bottom: 2rem; */
   grid-template-columns: repeat(1, 1fr);
   @media only screen and (min-width: 600px) {
     grid-gap: 2%;
     grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 10%;
   }
 
   @media only screen and (min-width: 875px) {
@@ -20,6 +22,7 @@ export const ItemContentContainer = styled.div`
   }
   @media only screen and (min-width: 1200px) {
     grid-gap: 3%;
+    padding-bottom: 2%;
     grid-template-columns: repeat(4, 1fr);
   }
 `;
