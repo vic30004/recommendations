@@ -6,15 +6,30 @@
             "image": "vic30004/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory":128
+            "memory":128,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "awslogs-client",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "awslogs-client"
+                }
+            }
         },
         {
             "name": "server",
             "image": "vic30004/multi-api",
             "hostname": "api",
             "essential": false,
-            "memory":128
-           
+            "memory":128,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "awslogs-server",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "awslogs-server"
+                }
+            }
 
         },
         {
@@ -23,6 +38,14 @@
             "hostname": "nginx",
             "essential": true,
             "memory":128,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "awslogs-nginx",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "awslogs-nginx"
+                }
+            },
             "portMappings": [
                 {
                     "hostPort": 80,
