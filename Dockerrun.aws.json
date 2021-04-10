@@ -6,24 +6,15 @@
             "image": "vic30004/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory":128,
-            "command": [
-                "tail",
-                "-f",
-                "/bin/bash"
-              ]
+            "memory":128
         },
         {
             "name": "server",
             "image": "vic30004/multi-api",
             "hostname": "api",
             "essential": false,
-            "memory":128,
-            "command": [
-                "tail",
-                "-f",
-                "/bin/bash"
-              ]
+            "memory":128
+           
 
         },
         {
