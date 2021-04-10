@@ -18,7 +18,7 @@ deploy:
   provider: elasticbeanstalk
   region: 'us-east-1'
   app: 'recommendation'
-  env: 'Recommendation-env'
+  env: 'Recommendation-env-1'
   bucket_name: 'elasticbeanstalk-us-east-1-659394969678'
   bucket_path: 'docker-recommendation'
   on:

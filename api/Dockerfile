@@ -9,5 +9,5 @@ RUN npm install
 COPY . .
 
 
-
+RUN npx run migrate
 CMD ["npm","run","start"]
