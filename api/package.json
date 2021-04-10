@@ -4,10 +4,10 @@
   "description": "An application to create recommendations",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "migrate": "knex migrate:latest",
+    "start": "migrate && node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate": "knex migrate:latest",
     "migrateRoll":"knex migrate:rollback && knex migrate:latest"
   },
   "repository": {
