@@ -6,6 +6,7 @@
   "scripts": {
     "migrate": "knex migrate:latest",
     "start": "node index.js",
+    "production": "node index.js && knex migrate:latest",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrateRoll":"knex migrate:rollback && knex migrate:latest"
