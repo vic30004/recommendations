@@ -4,7 +4,6 @@ import Header from "../../components/Profile/Header";
 import { useQuery } from "@apollo/client";
 import { GETUSERBYUSERNAME } from "../../graphql/Users";
 
-
 const Profile = (props) => {
   const [username, setUsername] = useState(props.match.params.username || "");
   // Get user by Username
@@ -16,11 +15,11 @@ const Profile = (props) => {
   );
 
   // Query to get recommendations
- 
+
   return (
     <div>
       {userError ? (
-        ''
+        ""
       ) : (
         <>
           {!userLoading && userData ? (

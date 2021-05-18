@@ -14,19 +14,19 @@ function App({ client }) {
   return (
     <Suspense fallback='loading...'>
       <Router>
-        <Switch>
-          <Route exact path='/' component={Homepage} />
-          <UserState>
-            <Route exact path='/recommendations' component={Recommendations} />
-
+        <UserState>
+          <Switch>
             <Route
               exact
               path='/:recommendationId/:username'
               component={Items}
             />
-            <Route exacth path='/:username' component={Profile} />
-          </UserState>
-        </Switch>
+
+            <Route exact path='/recommendations' component={Recommendations} />
+          </Switch>
+          <Route exact path='/:username' component={Profile} />
+        </UserState>
+        <Route exact path='/' component={Homepage} />
       </Router>
     </Suspense>
   );

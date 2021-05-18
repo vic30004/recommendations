@@ -11,39 +11,42 @@ import RecommendationsCotnent from "./RecommendationsCotnent";
 const Header = ({ data }) => {
   console.log(data);
   return (
-    <ItemHeaderContainer>
-      {data.getRecommendationById.map((item, i) => (
-        <HeaderContentContainer>
-          <Image
-            cloud_name='dawyijhjw'
-            publicId={item.main_picture}
-            width='auto'
-            crop='fill'
-            quality='auto'
-            responsive
-            responsiveUseBreakpoints="true"
-            loading='lazy'
-            format='webp'
-            flag='prgressive'
-            effect='blur:120'
-            height='350'
-          >
-            <Placeholder type='pixelate' />
-          </Image>
-          <HeaderInfoContainer>
-            <h1>{item.title}</h1>
-            <ul>
-              <RecommendationsCotnent
-                category={item.category}
-                id={item.user_id}
-                follow={item.follow}
-              ></RecommendationsCotnent>
-            </ul>
-            <p>{item.description}</p>
-          </HeaderInfoContainer>
-        </HeaderContentContainer>
-      ))}
-    </ItemHeaderContainer>
+    <>
+    
+      <ItemHeaderContainer>
+        {data.getRecommendationById.map((item, i) => (
+          <HeaderContentContainer>
+            <Image
+              cloud_name='dawyijhjw'
+              publicId={item.main_picture}
+              width='auto'
+              crop='fill'
+              quality='auto'
+              responsive
+              responsiveUseBreakpoints='true'
+              loading='lazy'
+              format='webp'
+              flag='prgressive'
+              effect='blur:120'
+              height='350'
+            >
+              <Placeholder type='pixelate' />
+            </Image>
+            <HeaderInfoContainer>
+              <h1>{item.title}</h1>
+              <ul>
+                <RecommendationsCotnent
+                  category={item.category}
+                  id={item.user_id}
+                  follow={item.follow}
+                ></RecommendationsCotnent>
+              </ul>
+              <p>{item.description}</p>
+            </HeaderInfoContainer>
+          </HeaderContentContainer>
+        ))}
+      </ItemHeaderContainer>
+    </>
   );
 };
 

@@ -18,7 +18,11 @@ export const Controls = () => {
       <ul>
         <li>
           {" "}
-          <Link to={`/${user.loadUser[0].username}`}>Profile</Link>
+          {user ? (
+            <Link to={`/profile/${user.loadUser[0].username}`}>Profile</Link>
+          ) : (
+            ""
+          )}
         </li>
       </ul>
     </ControlsContainer>
