@@ -14,5 +14,3 @@ release:
     - npm run migrate
   image: api   
 
-run: 
-  api: npm start 
