@@ -9,7 +9,5 @@ build:
     nginx: nginx/Dockerfile
   config:
     NODE_ENV: production
-release:
-  image: api
-  image: client
-  image: nginx 
+
+  
