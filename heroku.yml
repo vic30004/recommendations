@@ -15,6 +15,7 @@ release:
   image: api   
 run: 
   api: 
-    command: npm run start 
+    command:
+      - npm run start 
     image: api
  
