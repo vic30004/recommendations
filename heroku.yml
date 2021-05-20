@@ -9,5 +9,10 @@ build:
     nginx: nginx/Dockerfile
   config:
     NODE_ENV: production
+release:
+  command: 
+    - npm run migrate
+  image: api   
 
-  
+run: 
+  api: npm start 
