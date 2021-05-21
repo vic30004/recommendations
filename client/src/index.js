@@ -12,7 +12,7 @@ console.log(uri)
 if (process.env.NODE_ENV === "development") {
   uri = "http://localhost:5000/graphql";
 } else {
-  uri = `${window.location.href}/graphql`;
+  uri = `${window.location.href}graphql`;
 }
 const client = new ApolloClient({
   uri,
