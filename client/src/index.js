@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
 
 const url =
-  "http://recommendation-env.eba-gadmhprn.us-east-1.elasticbeanstalk.com/";
+  "http://recommendation-env.eba-gadmhprn.us-east-1.elasticbeanstalk.com/graphql";
 let uri;
 console.log(uri);
 if (process.env.NODE_ENV === "development") {
