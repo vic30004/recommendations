@@ -39,11 +39,12 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      host: process.env.DB_HOST,
-      port: "",
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
+      host: process.env.RDS_HOSTNAME,
+      port: process.env.RDS_PORT,
+      user: process.env.RDS_USERNAME,
+      password: process.env.RDS_PASSWORD,
       database: process.env.DB,
+      name: process.env.RDS_DB_NAME,
     },
     migrations: {
       directory: "./db/migrations",
