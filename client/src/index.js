@@ -6,9 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
 
-const url = window.location.href;
+const url =
+  "http://recommendation-env.eba-gadmhprn.us-east-1.elasticbeanstalk.com/";
 let uri;
-console.log(uri)
+console.log(uri);
 if (process.env.NODE_ENV === "development") {
   uri = "http://localhost:5000/graphql";
 } else {
