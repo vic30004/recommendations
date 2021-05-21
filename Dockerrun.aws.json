@@ -6,6 +6,7 @@
             "image": "vic30004/multi-nginx",
             "hostname": "nginx",
             "essential": true,
+            "memory":100,
             "portMappings": [
                 {
                     "hostPort": 80,
@@ -21,13 +22,16 @@
             "name": "client",
             "image": "vic30004/multi-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory":300
         },
         {
             "name": "server",
             "image": "vic30004/multi-api",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory":300
+
         }
    
     ]
