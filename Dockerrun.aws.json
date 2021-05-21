@@ -23,14 +23,14 @@
             "image": "vic30004/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory":512
+            "memory":700
         },
         {
             "name": "server",
             "image": "vic30004/multi-api",
             "hostname": "api",
             "essential": false,
-            "memory":300
+            "memory":100
 
         }
    
