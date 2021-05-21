@@ -2,10 +2,10 @@ sudo: required
 services:
   - docker
 
-script: 
-  - docker build -t vic30004/multi-client ./client 
-  - docker build -t vic30004/multi-nginx ./nginx 
-  - docker build -t vic30004/multi-api ./api 
+script:
+  - docker build --compress -t vic30004/multi-client ./client
+  - docker build --compress -t vic30004/multi-nginx ./nginx
+  - docker build --compress -t vic30004/multi-api ./api
   # Login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
@@ -13,17 +13,14 @@ script:
   - docker push vic30004/multi-nginx
   - docker push vic30004/multi-api
 
-
 deploy:
   provider: elasticbeanstalk
-  region: 'us-east-1'
-  app: 'recommendation'
-  env: 'Recommendation-env'
-  bucket_name: 'elasticbeanstalk-us-east-1-659394969678'
-  bucket_path: 'docker-recommendation'
+  region: "us-east-1"
+  app: "recommendation"
+  env: "Recommendation-env"
+  bucket_name: "elasticbeanstalk-us-east-1-659394969678"
+  bucket_path: "docker-recommendation"
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-
-
