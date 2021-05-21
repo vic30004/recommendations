@@ -25,20 +25,13 @@ const AddContainer = ({ toggle }) => {
     recommendationId: "",
   });
 
-  const [
-    addingRecommendations,
-    setAddingRecommendations,
-    toggleItems,
-  ] = useToggle(true);
+  const [addingRecommendations, setAddingRecommendations, toggleItems] =
+    useToggle(true);
 
   const { title, category, description, main_picture } = formData;
 
-  const {
-    itemsTitle,
-    itemsDescription,
-    itemsCoverPicture,
-    recommendationId,
-  } = itemData;
+  const { itemsTitle, itemsDescription, itemsCoverPicture, recommendationId } =
+    itemData;
 
   const [
     addRecommendation,
@@ -75,10 +68,11 @@ const AddContainer = ({ toggle }) => {
 
   let openWidget = (event, fn, data = "rec") => {
     event.preventDefault();
+    console.log('Running')
     window.cloudinary.openUploadWidget(
       {
-        cloudName: process.env.REACT_APP_CLOUDINARYCLOUD,
-        uploadPreset: process.env.REACT_APP_CLOUDINARYPRESET,
+        cloudName: "dawyijhjw",
+        uploadPreset: "recommendation",
         sources: ["local", "url", "facebook", "dropbox"],
         cropping: true,
       },
@@ -87,6 +81,7 @@ const AddContainer = ({ toggle }) => {
           console.log(error);
           throw error;
         }
+        console.log(result);
         if (result.event === "success") {
           const arr = data === "items" ? itemData : formData;
           fn({ ...arr, [event.target.name]: result.info.public_id });
