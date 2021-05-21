@@ -23,7 +23,7 @@
             "image": "vic30004/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory":1024
+            "memory":512
         },
         {
             "name": "server",
