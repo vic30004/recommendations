@@ -8,7 +8,7 @@ import { ApolloProvider } from "@apollo/client";
 
 const url = window.location.href;
 let uri;
-
+console.log(uri)
 if (process.env.NODE_ENV === "development") {
   uri = "http://localhost:5000/graphql";
 } else {
