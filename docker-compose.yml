@@ -9,7 +9,7 @@ services:
       - api
       - client
     ports:
-      - "3050:80"
+      - "80:80"
   api:
     restart: always
     environment:
@@ -24,8 +24,8 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile.api
-    ports:
-      - "5000:5000"
+    # ports:
+    #   - "5000:5000"
     volumes:
       - /app/node_modules
       - ./api:/app
@@ -39,8 +39,8 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile.client
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     volumes:
       - /app/node_modules
       - ./client:/app
