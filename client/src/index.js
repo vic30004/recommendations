@@ -6,8 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
 
+const url = window.location.href;
+let uri;
+
+if (process.env.NODE_ENV === "development") {
+  uri = "http://localhost:5000/graphql";
+} else {
+  uri = `${window.location.href}:5000/graphql`;
+}
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  uri,
   cache: new InMemoryCache(),
   headers: {
     authorization: localStorage.getItem("token") || "",

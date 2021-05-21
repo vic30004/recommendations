@@ -46,7 +46,6 @@ const verifyToken = (req, res, next) => {
 verifyToken.unless = unless;
 
 app.use(verifyToken.unless({ path: ["/graphql", "/"] }));
-console.log(process.env.NODE_ENV);
 app.use(
   "/graphql",
 
