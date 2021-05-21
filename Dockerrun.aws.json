@@ -2,26 +2,11 @@
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
-            "name": "client",
-            "image": "vic30004/multi-client",
-            "hostname": "client",
-            "essential": false,
-            "memory":512
-        },
-        {
-            "name": "server",
-            "image": "vic30004/multi-api",
-            "hostname": "api",
-            "essential": false,
-            "memory":128
-
-        },
-        {
             "name": "nginx",
             "image": "vic30004/multi-nginx",
             "hostname": "nginx",
             "essential": true,
-            "memory":128,
+            "memory":100,
             "portMappings": [
                 {
                     "hostPort": 80,
@@ -32,6 +17,22 @@
                 "client",
                 "server"
             ]
+        },
+        {
+            "name": "client",
+            "image": "vic30004/multi-client",
+            "hostname": "client",
+            "essential": false,
+            "memory":300
+        },
+        {
+            "name": "server",
+            "image": "vic30004/multi-api",
+            "hostname": "api",
+            "essential": false,
+            "memory":300
+
         }
+   
     ]
 }

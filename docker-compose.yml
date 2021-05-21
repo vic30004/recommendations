@@ -4,7 +4,7 @@ services:
     restart: always
     build:
       context: ./nginx
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile
     depends_on:
       - api
       - client
@@ -23,9 +23,9 @@ services:
       - JWTSECRET=${JWTSECRET}
     build:
       context: ./api
-      dockerfile: Dockerfile.api
-    # ports:
-    #   - "5000:5000"
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
     volumes:
       - /app/node_modules
       - ./api:/app
@@ -38,9 +38,9 @@ services:
       - REACT_APP_CLOUDINARYPRESET=${REACT_APP_CLOUDINARYPRESET}
     build:
       context: ./client
-      dockerfile: Dockerfile.client
-    # ports:
-    #   - "3000:3000"
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     volumes:
       - /app/node_modules
       - ./client:/app
