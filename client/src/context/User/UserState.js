@@ -21,7 +21,6 @@ const UserState = (props) => {
     state.error.push(error);
   }
 
-
   const loadUser = () => {
     dispatch({
       type: LOGIN,
@@ -38,6 +37,7 @@ const UserState = (props) => {
       value={{
         loadUser,
         user: state.user,
+        userLoading: state.loading,
         isAuthenticated: state.isAuthenticated,
       }}
     >

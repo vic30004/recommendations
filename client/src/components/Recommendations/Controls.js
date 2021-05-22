@@ -3,10 +3,19 @@ import { Logo } from "../common";
 import { ControlsContainer } from "../../styles/Recommendations/Controls";
 import UserContext from "../../context/User/UserContext";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const Controls = () => {
   const userContext = useContext(UserContext);
   const { user } = userContext;
+  let history = useHistory();
+
+  const handleLogout = () => {
+    localStorage["token"] = "";
+    history.push("/");
+
+    return;
+  };
   return (
     <ControlsContainer>
       <div className='logo'>
@@ -24,6 +33,7 @@ export const Controls = () => {
             ""
           )}
         </li>
+        <li onClick={handleLogout}>Logout</li>
       </ul>
     </ControlsContainer>
   );

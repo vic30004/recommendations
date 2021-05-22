@@ -1,7 +1,12 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
 import Items from "./pages/Items/Items";
 import UserState from "./context/User/UserState";
@@ -11,6 +16,7 @@ const Recommendations = lazy(() =>
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 
 function App({ client }) {
+
   return (
     <Suspense fallback='loading...'>
       <Router>

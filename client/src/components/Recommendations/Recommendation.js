@@ -11,13 +11,12 @@ import UserContext from "../../context/User/UserContext";
 export const Recommendation = () => {
   const { data, loading, error, fetchMore } = useQuery(GET_RECOMMENDATIONS);
 
-
   const userContext = useContext(UserContext);
-  const { loadUser, user } = userContext;
+  const { userLoading, user } = userContext;
 
   return (
     <>
-      {loading ? (
+      {loading && !data ? (
         <h2>loading...</h2>
       ) : data ? (
         <RecommendationContainer>
@@ -39,15 +38,19 @@ export const Recommendation = () => {
                 </Image>
                 <span>{item.category}</span>
               </div>
-              <RecommendationContainerItems
-                title={item.title}
-                id={item.user_id}
-                category={item.category}
-                description={item.description}
-                follow={item.follow}
-                recommendation_id={item.id}
-                user={user}
-              />
+              {!userLoading ? (
+                <RecommendationContainerItems
+                  title={item.title}
+                  id={item.user_id}
+                  category={item.category}
+                  description={item.description}
+                  follow={item.follow}
+                  recommendation_id={item.id}
+                  user={user}
+                />
+              ) : (
+                "Loading..."
+              )}
             </RecommendationCard>
           ))}
         </RecommendationContainer>

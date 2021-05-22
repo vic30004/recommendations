@@ -1,8 +1,9 @@
 import React, { useContext, useReducer } from "react";
-import { InputBuilder, Button,Form } from "../common";
+import { InputBuilder, Button, Form } from "../common";
 import useForm from "../hooks/UseForm";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { ADD_USER, LOGIN_USER } from "../../graphql";
+import { useHistory } from "react-router-dom";
 
 const SignIn = ({ setMessage, setError }) => {
   const [formData, setFormData] = useForm({
@@ -11,20 +12,19 @@ const SignIn = ({ setMessage, setError }) => {
   });
 
   const { username, password } = formData;
+  let history = useHistory();
 
-  const [
-    loginUser,
-    { loading: mutationLoading, error: mutationError },
-  ] = useMutation(LOGIN_USER, {
-    variables: {
-      username,
-      password,
-    },
-    onError(err) {
-      setError(true);
-      setMessage(err.message);
-    },
-  });
+  const [loginUser, { loading: mutationLoading, error: mutationError }] =
+    useMutation(LOGIN_USER, {
+      variables: {
+        username,
+        password,
+      },
+      onError(err) {
+        setError(true);
+        setMessage(err.message);
+      },
+    });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +34,7 @@ const SignIn = ({ setMessage, setError }) => {
       let token = user.data.loginUser.token;
       localStorage["token"] = token;
       setMessage("Logged in!");
+      history.push("/recommendations");
     }
   };
 

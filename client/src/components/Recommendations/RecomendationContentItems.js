@@ -48,6 +48,7 @@ const RecomendationContentItems = ({
   });
 
   const filterFollowers = (arr) => {
+
     const userId = user.loadUser[0].id;
     if (!arr) {
       return setFollowing(false);
@@ -72,16 +73,18 @@ const RecomendationContentItems = ({
   };
 
   useEffect(() => {
-    if (!followersLoading && followers) {
-      filterFollowers(followers);
+    if (user) {
+      if (!followersLoading && followers) {
+        filterFollowers(followers);
+      }
     }
-  }, [followers, muationLoading]);
+  }, [followers, muationLoading, user]);
 
   return (
     <Fragment>
       <h1>{title}</h1>
       <ContentSection>
-        {!loading && data.user && (
+        {data && (
           <Fragment>
             <ContentContainer>
               <h5>
