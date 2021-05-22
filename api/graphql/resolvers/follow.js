@@ -70,12 +70,12 @@ module.exports = {
           recommendation_id,
           user_id,
         });
-
+        const followNum = check[0].follow;
         if (checkIfFollow.length > 0) {
           await db("follow").where({ recommendation_id }).del();
           await db("recommendation")
             .where({ id: recommendation_id })
-            .update({ follow: -1 });
+            .update({ follow: followNum - 1 });
           return [];
         }
         if (check.length > 0) {
@@ -90,9 +90,10 @@ module.exports = {
               recommendation_id,
             })
             .returning("*");
+
           await db("recommendation")
             .where({ id: recommendation_id })
-            .update({ follow: +1 });
+            .update({ follow: followNum + 1 });
           return follow;
         }
         throw new Error("No recommendation found");

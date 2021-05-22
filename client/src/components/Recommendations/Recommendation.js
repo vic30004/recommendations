@@ -27,7 +27,7 @@ export const Recommendation = () => {
                 <Image
                   cloud_name='dawyijhjw'
                   publicId={item.main_picture}
-                  width='620'
+                  // width='620'
                   crop='limit'
                   quality='auto'
                   responsive
