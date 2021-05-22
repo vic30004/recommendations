@@ -44,7 +44,8 @@ module.exports = {
       );
     }
 
-    const emailCheck = /^([\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*[\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)$/i;
+    const emailCheck =
+      /^([\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*[\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)$/i;
 
     if (!emailCheck.test(email)) {
       return new Error("Please enter a valid email");
@@ -67,7 +68,6 @@ module.exports = {
 
   getUserByUsername: async ({ username }, context) => {
     const { token } = await context();
-
     if (token) {
       try {
         const query = await db("users").where({ username });
