@@ -5,6 +5,7 @@ export default (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOGIN:
+      console.log(payload);
       return {
         ...state,
         isAuthenticated: true,

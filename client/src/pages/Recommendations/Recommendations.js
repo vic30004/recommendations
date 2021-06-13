@@ -10,7 +10,7 @@ import AddContainer from "../../components/Recommendations/AddContainer";
 import useToggle from "../../components/hooks/useToggle";
 import { MainContainer } from "../../styles/Recommendations/Recommendations";
 
-const Recommendations = (props) => {
+const Recommendations = (props,{client}) => {
   const [modal, setModal, toggle] = useToggle();
 
   return (

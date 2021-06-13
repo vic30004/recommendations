@@ -7,7 +7,7 @@ import UserReducer from "./UserReducer";
 
 const UserState = (props) => {
   const initialState = {
-    user: [],
+    user: null,
     isAuthenticated: false,
     loading: true,
     error: [],
@@ -29,8 +29,11 @@ const UserState = (props) => {
   };
 
   useEffect(() => {
-    loadUser();
-  }, [loading]);
+    console.log(localStorage["token"]);
+    if (localStorage["token"] !== "") {
+      loadUser();
+    }
+  }, [loading, localStorage["token"]]);
 
   return (
     <UserContext.Provider

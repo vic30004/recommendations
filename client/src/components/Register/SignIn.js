@@ -34,7 +34,7 @@ const SignIn = ({ setMessage, setError }) => {
       let token = user.data.loginUser.token;
       localStorage["token"] = token;
       setMessage("Logged in!");
-      history.push("/recommendations");
+      window.location.reload();
     }
   };
 

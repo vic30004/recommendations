@@ -19,9 +19,9 @@ const Profile = (props) => {
   } = useQuery(GETUSERBYUSERNAME, {
     variables: { username },
   });
- 
-  // Query to get recommendations
 
+  // Query to get recommendations
+  console.log({ userData });
   return (
     <div>
       {!userData ? (

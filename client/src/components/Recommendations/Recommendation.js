@@ -16,7 +16,7 @@ export const Recommendation = () => {
 
   return (
     <>
-      {loading && !data ? (
+      {!loading && !data ? (
         <h2>loading...</h2>
       ) : data ? (
         <RecommendationContainer>
@@ -38,7 +38,7 @@ export const Recommendation = () => {
                 </Image>
                 <span>{item.category}</span>
               </div>
-              {!userLoading ? (
+              {!userLoading? (
                 <RecommendationContainerItems
                   title={item.title}
                   id={item.user_id}

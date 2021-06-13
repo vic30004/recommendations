@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Logo } from "../common";
 import { ControlsContainer } from "../../styles/Recommendations/Controls";
 import UserContext from "../../context/User/UserContext";
@@ -7,15 +7,17 @@ import { useHistory } from "react-router-dom";
 
 export const Controls = () => {
   const userContext = useContext(UserContext);
-  const { user } = userContext;
+
+  const { userLoading, user } = userContext;
   let history = useHistory();
 
   const handleLogout = () => {
     localStorage["token"] = "";
     history.push("/");
-
     return;
   };
+
+
   return (
     <ControlsContainer>
       <div className='logo'>
@@ -28,7 +30,7 @@ export const Controls = () => {
         <li>
           {" "}
           {user ? (
-            <Link to={`/profile/${user.loadUser[0].username}`}>Profile</Link>
+            <Link to={`/${user.loadUser[0].username}`}>Profile</Link>
           ) : (
             ""
           )}
