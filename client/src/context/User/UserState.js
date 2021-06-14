@@ -29,7 +29,6 @@ const UserState = (props) => {
   };
 
   useEffect(() => {
-    console.log(localStorage["token"]);
     if (localStorage["token"] !== "") {
       loadUser();
     }

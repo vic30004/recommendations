@@ -1,7 +1,6 @@
 import { useState, useContext, Fragment } from "react";
 import { useMutation } from "@apollo/client";
 
-
 import UserContext from "../../context/User/UserContext";
 
 // Import Swiper styles
@@ -13,16 +12,14 @@ const ProfileBody = ({ recommendations, follow, query, user_id }) => {
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const userContext = useContext(UserContext);
 
-  const [
-    deleteItem,
-    { loading: deleteLoading, error: deleteError },
-  ] = useMutation(DELETE_RECOMMENDATION, {
-    refetchQueries: [{ query: query, variables: { user_id } }],
+  const [deleteItem, { loading: deleteLoading, error: deleteError }] =
+    useMutation(DELETE_RECOMMENDATION, {
+      refetchQueries: [{ query: query, variables: { user_id } }],
 
-    onError(err) {
-      console.log(err);
-    },
-  });
+      onError(err) {
+        console.log(err);
+      },
+    });
 
   const [editItem, { loading: editLoading, error: editError }] = useMutation(
     EDIT_RECOMMENDATION,
@@ -54,6 +51,8 @@ const ProfileBody = ({ recommendations, follow, query, user_id }) => {
               deleteItem={deleteItem}
               editItem={editItem}
               editLoading={editLoading}
+              profileCard={true}
+              follow={follow}
             />
           ))}
         </ItemContentContainer>

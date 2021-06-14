@@ -7,7 +7,7 @@ import useToggle from "../hooks/useToggle";
 import useForm from "../hooks/UseForm";
 import AddItems from "../Recommendations/AddItems";
 import { openWidget } from "../utils/CloudinaryWidget";
-
+import { Link } from "react-router-dom";
 const Cards = ({
   picture,
   title,
@@ -19,6 +19,8 @@ const Cards = ({
   deleteItem,
   editLoading,
   editItem,
+  profileCard,
+  follow,
 }) => {
   const [modal, setModal, toggle] = useToggle();
   const [currentUser, setUser] = useState(user.loadUser || "");
@@ -28,7 +30,6 @@ const Cards = ({
     itemsCoverPicture: picture,
   });
 
-  
   useEffect(() => {
     setItem({
       itemsTitle: title,
@@ -41,7 +42,7 @@ const Cards = ({
 
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log({itemsTitle})
+    console.log({ itemsTitle });
     editItem({
       variables: {
         id,
@@ -52,6 +53,17 @@ const Cards = ({
       },
     });
     toggle();
+  };
+
+  const generateItemLink = (title) => {
+    if (follow && profileCard) {
+      return { title };
+    }
+    return (
+      <Link to={`/${recommendation_id}/${user.loadUser[0].username}`}>
+        {title}
+      </Link>
+    );
   };
 
   return (
@@ -78,7 +90,9 @@ const Cards = ({
           <p>{description}</p>
         </div>
         <TitleContainer>
-          <CardTitle Col={"92%"}>{title}</CardTitle>
+          <CardTitle Col={"92%"}>
+            {profileCard ? generateItemLink(title) : title}
+          </CardTitle>
           {parseInt(currentUser[0].id) === parseInt(userId) ? (
             <>
               <span>
