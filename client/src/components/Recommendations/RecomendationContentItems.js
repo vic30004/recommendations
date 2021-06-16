@@ -48,8 +48,7 @@ const RecomendationContentItems = ({
   });
 
   const filterFollowers = (arr) => {
-
-    const userId = user.loadUser[0].id;
+    const userId = user ? user.loadUser[0].id : 0;
     if (!arr) {
       return setFollowing(false);
     }

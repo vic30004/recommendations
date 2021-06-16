@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import UserContext from "./UserContext";
-import { LOGIN } from "../types";
+import { LOGIN, USER_ERROR } from "../types";
 import { LOADUSER } from "../../graphql/Users";
 import { useQuery } from "@apollo/client";
 import UserReducer from "./UserReducer";
@@ -17,9 +17,13 @@ const UserState = (props) => {
 
   const { data, loading, error } = useQuery(LOADUSER);
 
-  if (error) {
-    state.error.push(error);
-  }
+  const handleError = () => {
+    dispatch({
+      type: USER_ERROR,
+      payload: error,
+    });
+  };
+
 
   const loadUser = () => {
     dispatch({
@@ -34,6 +38,11 @@ const UserState = (props) => {
     }
   }, [loading, localStorage["token"]]);
 
+  useEffect(()=>{
+    if(error){
+      handleError()
+    }
+  },[loading])
   return (
     <UserContext.Provider
       value={{

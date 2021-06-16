@@ -14,6 +14,33 @@ export const Recommendation = () => {
   const userContext = useContext(UserContext);
   const { userLoading, user } = userContext;
 
+  const renderRecommendationContainer = (user, item) => {
+    if (user) {
+      return (
+        <RecommendationContainerItems
+          title={item.title}
+          id={item.user_id}
+          category={item.category}
+          description={item.description}
+          follow={item.follow}
+          recommendation_id={item.id}
+          user={user}
+        />
+      );
+    } else {
+      return (
+        <RecommendationContainerItems
+          title={item.title}
+          id={item.user_id}
+          category={item.category}
+          description={item.description}
+          follow={item.follow}
+          recommendation_id={item.id}
+          user={null}
+        />
+      );
+    }
+  };
   return (
     <>
       {!loading && !data ? (
@@ -38,19 +65,9 @@ export const Recommendation = () => {
                 </Image>
                 <span>{item.category}</span>
               </div>
-              {!userLoading? (
-                <RecommendationContainerItems
-                  title={item.title}
-                  id={item.user_id}
-                  category={item.category}
-                  description={item.description}
-                  follow={item.follow}
-                  recommendation_id={item.id}
-                  user={user}
-                />
-              ) : (
-                "Loading..."
-              )}
+              {!userLoading
+                ? renderRecommendationContainer(user, item)
+                : "Loading..."}
             </RecommendationCard>
           ))}
         </RecommendationContainer>

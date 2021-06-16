@@ -15,42 +15,33 @@ module.exports = {
     ]);
   },
 
-  getRecommendationById: async ({ id }, context) => {
-    const { token } = await context();
-    if (token) {
-      try {
-        const data = await db("recommendation").where({ id });
-        if (data.length > 0) {
-          return data;
-        }
-
-        return new Error("Recommendation Not Found");
-      } catch (error) {
-        console.log(error);
-        throw error;
+  getRecommendationById: async ({ id }) => {
+    try {
+      const data = await db("recommendation").where({ id });
+      if (data.length > 0) {
+        return data;
       }
-    }
 
-    return new Error("Please sign in");
+      return new Error("Recommendation Not Found");
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   },
-  getRecommendationsByUsername: async ({ user_id }, context) => {
-    const { token } = await context();
-    if (token) {
+  getRecommendationsByUsername: async ({ user_id }) => {
       try {
         const data = await db("recommendation").where({ user_id });
         if (data.length > 0) {
           return data;
         }
 
-        
         return new Error("Recommendation Not Found");
       } catch (error) {
         console.log(error);
         throw error;
       }
-    }
+    
 
-    return new Error("Please sign in");
   },
   // Filter recommencation by title, cat, user_id
   recommendationFilter: async ({ title, category, user_id }, context) => {
