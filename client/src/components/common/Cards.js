@@ -23,7 +23,7 @@ const Cards = ({
   follow,
 }) => {
   const [modal, setModal, toggle] = useToggle();
-  const [currentUser, setUser] = useState(user.loadUser || "");
+  const [currentUser, setUser] = useState(user ? user.loadUser : "");
   const [item, handleChange, reset, setItem] = useForm({
     itemsTitle: title,
     itemsDescription: description,
@@ -93,7 +93,7 @@ const Cards = ({
           <CardTitle Col={"92%"}>
             {profileCard ? generateItemLink(title) : title}
           </CardTitle>
-          {parseInt(currentUser[0].id) === parseInt(userId) ? (
+          {currentUser && parseInt(currentUser[0].id) === parseInt(userId) ? (
             <>
               <span>
                 <i class='fas fa-ellipsis-v'></i>
