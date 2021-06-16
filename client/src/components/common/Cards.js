@@ -72,8 +72,8 @@ const Cards = ({
   };
 
   const generateItemLink = (title) => {
-    if (follow && profileCard) {
-      return { title };
+    if (follow && profileCard && !user) {
+      return <Link to={`/${recommendation_id}/${username}`}>{title}</Link>;
     }
 
     if (user) {
