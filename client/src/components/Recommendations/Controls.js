@@ -17,7 +17,6 @@ export const Controls = () => {
     return;
   };
 
-
   return (
     <ControlsContainer>
       <div className='logo'>
@@ -27,15 +26,19 @@ export const Controls = () => {
         </Logo>
       </div>
       <ul>
-        <li>
-          {" "}
-          {user ? (
-            <Link to={`/${user.loadUser[0].username}`}>Profile</Link>
-          ) : (
-            ""
-          )}
+        {user ? (
+          <>
+            <li>
+              <Link to={`/${user.loadUser[0].username}`}>Profile</Link>
+            </li>
+
+            <li onClick={handleLogout}>Logout</li>
+          </>
+        ) : (
+          <li>
+          <Link to={`/`}>Sign Up</Link>
         </li>
-        <li onClick={handleLogout}>Logout</li>
+        )}
       </ul>
     </ControlsContainer>
   );

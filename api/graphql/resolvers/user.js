@@ -66,8 +66,7 @@ module.exports = {
   },
 
   getUserByUsername: async ({ username }, context) => {
-    const { token } = await context();
-    if (token) {
+
       try {
         const query = await db("users").where({ username });
         if (query.length > 0) {
@@ -77,9 +76,7 @@ module.exports = {
       } catch (error) {
         return new Error("Something went wrong");
       }
-    } else {
-      return new Error("Please sign in");
-    }
+   
   },
 
   loginUser: async ({ username, password }, context) => {

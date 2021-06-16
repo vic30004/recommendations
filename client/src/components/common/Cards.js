@@ -8,6 +8,9 @@ import useForm from "../hooks/UseForm";
 import AddItems from "../Recommendations/AddItems";
 import { openWidget } from "../utils/CloudinaryWidget";
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_USER } from "../../graphql";
+
 const Cards = ({
   picture,
   title,
@@ -22,7 +25,12 @@ const Cards = ({
   profileCard,
   follow,
 }) => {
+  const { data, loading, error } = useQuery(GET_USER, {
+    variables: { id: parseInt(userId) },
+  });
+
   const [modal, setModal, toggle] = useToggle();
+  const [username, setUsername] = useState("");
   const [currentUser, setUser] = useState(user ? user.loadUser : "");
   const [item, handleChange, reset, setItem] = useForm({
     itemsTitle: title,
@@ -37,6 +45,14 @@ const Cards = ({
       itemsCoverPicture: picture,
     });
   }, [title, description, picture]);
+
+  useEffect(() => {
+    if (!user) {
+      if (!loading) {
+        setUsername(data.user.username);
+      }
+    }
+  }, [loading]);
 
   const { itemsTitle, itemsDescription, itemsCoverPicture } = item;
 
@@ -59,11 +75,16 @@ const Cards = ({
     if (follow && profileCard) {
       return { title };
     }
-    return (
-      <Link to={`/${recommendation_id}/${user.loadUser[0].username}`}>
-        {title}
-      </Link>
-    );
+
+    if (user) {
+      return (
+        <Link to={`/${recommendation_id}/${user.loadUser[0].username}`}>
+          {title}
+        </Link>
+      );
+    } else {
+      return <Link to={`/${recommendation_id}/${username}`}>{title}</Link>;
+    }
   };
 
   return (

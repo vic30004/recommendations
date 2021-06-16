@@ -21,7 +21,6 @@ const Profile = (props) => {
   });
 
   // Query to get recommendations
-  console.log({ userData });
   return (
     <div>
       {!userData ? (
