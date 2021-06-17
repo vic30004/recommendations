@@ -4,3 +4,4 @@ export * from "./InputBuilder";
 export * from "./Message";
 export * from "./Logo";
 export * from "./Flex";
+export * from "./SignUpText";

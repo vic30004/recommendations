@@ -9,6 +9,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { ContentContainer, ContentSection } from "../../styles/Recommendations";
 import { Link } from "react-router-dom";
 import useToggle from "../hooks/useToggle";
+import Modal from "../common/Modal";
+import { SignUpText } from "../common";
 
 const RecomendationContentItems = ({
   title,
@@ -22,8 +24,8 @@ const RecomendationContentItems = ({
   const { data, loading, error } = useQuery(GET_USER, {
     variables: { id },
   });
-  const [following, setFollowing, toggle] = useToggle();
-
+  const [following, setFollowing] = useToggle();
+  const [modal, setModal, toggle] = useToggle();
   const {
     data: followers,
     loading: followersLoading,
@@ -71,6 +73,34 @@ const RecomendationContentItems = ({
     return text;
   };
 
+  const handleLogoutFollowClick = (user, follow, recommendation_id) => {
+    if (user) {
+      return (
+        <h5>
+          Follows: {follow < 0 ? 0 : follow}
+          <i
+            onClick={() =>
+              followRecommendation({ variables: { recommendation_id } })
+            }
+            class='fas fa-heart'
+            style={following ? { color: "red" } : { color: "grey" }}
+          ></i>
+        </h5>
+      );
+    } else {
+      return (
+        <h5>
+          Follows: {follow < 0 ? 0 : follow}
+          <i
+            onClick={() => toggle()}
+            class='fas fa-heart'
+            style={{ color: "grey" }}
+          ></i>
+        </h5>
+      );
+    }
+  };
+
   useEffect(() => {
     if (user) {
       if (!followersLoading && followers) {
@@ -81,37 +111,34 @@ const RecomendationContentItems = ({
 
   return (
     <Fragment>
-      <h1>{title}</h1>
-      <ContentSection>
-        {data && (
-          <Fragment>
-            <ContentContainer>
-              <h5>
+      {modal ? <Modal>{SignUpText("follow")}</Modal> : ""}
+
+      <Fragment>
+        <h1>{title}</h1>
+        <ContentSection>
+          {data && (
+            <Fragment>
+              <ContentContainer>
+                <h5>
+                  {" "}
+                  <i class='fas fa-user'></i>{" "}
+                  <Link to={`/${data.user.username}`}>
+                    {data.user.username}
+                  </Link>
+                </h5>
+                <h5>{category}</h5>
+                {handleLogoutFollowClick(user, follow, recommendation_id)}
+              </ContentContainer>
+              <p>
                 {" "}
-                <i class='fas fa-user'></i>{" "}
-                <Link to={`/${data.user.username}`}>{data.user.username}</Link>
-              </h5>
-              <h5>{category}</h5>
-              <h5>
-                Follows: {follow < 0 ? 0 : follow}
-                <i
-                  onClick={() =>
-                    followRecommendation({ variables: { recommendation_id } })
-                  }
-                  class='fas fa-heart'
-                  style={following ? { color: "red" } : { color: "grey" }}
-                ></i>
-              </h5>
-            </ContentContainer>
-            <p>
-              {" "}
-              <Link to={`/${recommendation_id}/${data.user.username}`}>
-                {limitText(description, 20)}
-              </Link>
-            </p>
-          </Fragment>
-        )}
-      </ContentSection>
+                <Link to={`/${recommendation_id}/${data.user.username}`}>
+                  {limitText(description, 20)}
+                </Link>
+              </p>
+            </Fragment>
+          )}
+        </ContentSection>
+      </Fragment>
     </Fragment>
   );
 };

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import UserContext from "../../context/User/UserContext";
 import { ItemContentContainer } from "../../styles/Items";
 import Cards from "../common/Cards";
+import { generateCard } from "../common/helper/GenerateCards";
+
 const Content = ({
   loading,
   data,
@@ -18,46 +20,17 @@ const Content = ({
     console.log(error);
   }
 
-  const generateCard = (user, item) => {
-    if (user) {
-      return (
-        <Cards
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          picture={item.cover_picture}
-          description={item.description}
-          userId={item.user_id}
-          user={user}
-          recommendation_id={item.recommendation_id}
-          deleteItem={deleteItem}
-          editItem={editItem}
-          editLoading={editLoading}
-        />
-      );
-    } else {
-      return (
-        <Cards
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          picture={item.cover_picture}
-          description={item.description}
-          userId={item.user_id}
-          user={null}
-          recommendation_id={item.recommendation_id}
-          deleteItem={deleteItem}
-          editItem={editItem}
-          editLoading={editLoading}
-        />
-      );
-    }
+  const args = {
+    deleteItem,
+    editItem,
+    editLoading,
+    follow:false,
+    cover: true,
   };
-
   return (
     <ItemContentContainer>
       {!loading && data
-        ? data.showItems.map((item) => generateCard(user, item))
+        ? data.showItems.map((item) => generateCard(user, item, args))
         : ""}
     </ItemContentContainer>
   );
