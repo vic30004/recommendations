@@ -111,7 +111,7 @@ const RecomendationContentItems = ({
 
   return (
     <Fragment>
-      {modal ? <Modal>{SignUpText("follow")}</Modal> : ""}
+      {modal ? <Modal>{SignUpText("follow", toggle)}</Modal> : ""}
 
       <Fragment>
         <h1>{title}</h1>

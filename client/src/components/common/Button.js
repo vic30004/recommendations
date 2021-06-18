@@ -18,4 +18,15 @@ export const Button = styled.button`
   display: ${(props) => (props.inline ? "inherit" : "block")};
   margin: ${(props) => (props.center ? "0 auto" : "0")};
   margin-top: ${(props) => (props.marg ? props.marg : "1rem")};
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(2px);
+    box-shadow: 0 0 1.5px ${(props) => (props.shadowC ? props.shadowC : "#fff")};
+  }
+
+  &:active {
+    transform: translateY(3px);
+    box-shadow: none;
+  }
 `;

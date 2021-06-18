@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useContext } from "react";
 import Modal from "../../components/common/Modal.js";
 import {
   Controls,
@@ -9,9 +9,15 @@ import {
 import AddContainer from "../../components/Recommendations/AddContainer";
 import useToggle from "../../components/hooks/useToggle";
 import { MainContainer } from "../../styles/Recommendations/Recommendations";
+import { SignUpText } from "../../components/common/SignUpText.js";
+import UserContext from "../../context/User/UserContext";
 
-const Recommendations = (props,{client}) => {
+const Recommendations = (props, { client }) => {
   const [modal, setModal, toggle] = useToggle();
+  const [signinModal, setSigninModal, toggleSignin] = useToggle();
+
+  const userContext = useContext(UserContext);
+  const { user } = userContext;
 
   return (
     <>
@@ -22,9 +28,10 @@ const Recommendations = (props,{client}) => {
       ) : (
         ""
       )}
+      {signinModal ? <Modal>{SignUpText("add", toggleSignin)}</Modal> : ""}
       <Controls />
       <MainContainer>
-        <AddSection toggle={toggle} />
+        <AddSection toggle={user ? toggle : toggleSignin} />
         <Recommendation />
         <UpdatesSections />
       </MainContainer>
