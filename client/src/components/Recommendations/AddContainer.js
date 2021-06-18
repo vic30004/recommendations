@@ -78,10 +78,8 @@ const AddContainer = ({ toggle }) => {
       },
       (error, result) => {
         if (error) {
-          console.log(error);
           throw error;
         }
-        console.log(result);
         if (result.event === "success") {
           const arr = data === "items" ? itemData : formData;
           fn({ ...arr, [event.target.name]: result.info.public_id });

@@ -34,15 +34,19 @@ const ProfileBody = ({ recommendations, follow, query, user_id }) => {
   );
 
   const { user } = userContext;
-
+  const args = {
+    deleteItem,
+    editItem,
+    editLoading,
+    follow,
+    cover: false,
+  };
   return (
     <Fragment>
       <h2>{follow ? "Following" : "Recommendations"}</h2>
       {recommendations.length ? (
         <ItemContentContainer>
-          {recommendations.map((item) =>
-            generateCard(user, item, deleteItem, editItem, editLoading, follow)
-          )}
+          {recommendations.map((item) => generateCard(user, item, args))}
         </ItemContentContainer>
       ) : follow ? (
         <ItemContentContainer>

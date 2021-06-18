@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Content from "../../components/Items/Content";
 import Header from "../../components/Items/Header";
 import useToggle from "../../components/hooks/useToggle";
 import useForm from "../../components/hooks/UseForm";
+import UserContext from "../../context/User/UserContext";
 import { ItemsContainer } from "../../styles/Items";
 import { useQuery, useMutation } from "@apollo/client";
 import {
@@ -16,12 +17,18 @@ import Modal from "../../components/common/Modal.js";
 import AddItems from "../../components/Recommendations/AddItems";
 import ModalTrigger from "../../components/common/ModalTrigger";
 import { openWidget } from "../../components/utils/CloudinaryWidget";
+import { SignUpText } from "../../components/common";
 const Items = (props) => {
   const [id, setId] = useState(props.match.params.recommendationId || "");
   const [recommendation_id, setRecommendation_id] = useState(
     parseInt(props.match.params.recommendationId) || 0
   );
   const [modal, setModal, toggle] = useToggle();
+  const [signinModal, setSigninModal, toggleSignin] = useToggle();
+
+  const userContext = useContext(UserContext);
+  const { user } = userContext;
+
   const [formData, handleChange, reset, setFormData] = useForm({
     itemsTitle: "",
     itemsDescription: "",
@@ -59,16 +66,14 @@ const Items = (props) => {
     }
   );
 
-  const [
-    deleteItem,
-    { loading: deleteLoading, error: deleteError },
-  ] = useMutation(DELETE_ITEMS, {
-    refetchQueries: [{ query: GET_ITEMS, variables: { recommendation_id } }],
+  const [deleteItem, { loading: deleteLoading, error: deleteError }] =
+    useMutation(DELETE_ITEMS, {
+      refetchQueries: [{ query: GET_ITEMS, variables: { recommendation_id } }],
 
-    onError(err) {
-      console.log(err);
-    },
-  });
+      onError(err) {
+        console.log(err);
+      },
+    });
 
   const [
     addItems,
@@ -118,7 +123,8 @@ const Items = (props) => {
         ""
       )}
 
-      <ModalTrigger toggle={toggle} />
+      <ModalTrigger toggle={user ? toggle : toggleSignin} />
+      {signinModal ? <Modal>{SignUpText("add-item", toggleSignin)}</Modal> : ""}
       {modal ? (
         <Modal>
           <AddItems
