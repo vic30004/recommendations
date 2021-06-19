@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Content from "../../components/Items/Content";
 import Header from "../../components/Items/Header";
 import useToggle from "../../components/hooks/useToggle";
@@ -23,6 +23,8 @@ const Items = (props) => {
   const [recommendation_id, setRecommendation_id] = useState(
     parseInt(props.match.params.recommendationId) || 0
   );
+  const [username, setUsername] = useState(props.match.params.username || "");
+
   const [modal, setModal, toggle] = useToggle();
   const [signinModal, setSigninModal, toggleSignin] = useToggle();
 
@@ -54,6 +56,18 @@ const Items = (props) => {
       console.log(error);
     }
   }
+
+  const generateModalTrigger = (user, username) => {
+    if (!user) {
+      return;
+    }
+    if (user) {
+      console.log(user.username);
+      if (user.loadUser[0].username === username) {
+        return <ModalTrigger toggle={user ? toggle : toggleSignin} />;
+      }
+    }
+  };
 
   const [editItem, { loading: editLoading, error: editError }] = useMutation(
     EDIT_ITEM,
@@ -91,10 +105,13 @@ const Items = (props) => {
     },
   });
 
+  useEffect(() => {
+    setUsername(props.match.params.username);
+  }, [props.match.params.username]);
+
   if (loading) return "loding...";
 
   if (contentLoading) return "Loading content";
-  console.log({ contentData });
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!itemsTitle || !itemsDescription || !itemsCoverPicture) {
@@ -107,6 +124,7 @@ const Items = (props) => {
       toggle();
     }
   };
+
   return (
     <ItemsContainer>
       <Header data={data} />
@@ -122,8 +140,7 @@ const Items = (props) => {
       ) : (
         ""
       )}
-
-      <ModalTrigger toggle={user ? toggle : toggleSignin} />
+      {generateModalTrigger(user, username)}
       {signinModal ? <Modal>{SignUpText("add-item", toggleSignin)}</Modal> : ""}
       {modal ? (
         <Modal>
